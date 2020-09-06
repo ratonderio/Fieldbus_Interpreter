@@ -12,6 +12,9 @@ public class DataLoader {
     SchenckDateTime currentTime = new SchenckDateTime(test2[0] + " " + test2[1] + " " + test2[2], test2[5] + test2[6]);
     System.out.println(currentTime.currentTime + currentTime.currentMillis);
 
+    FBInput fbInput = new FBInput();
+    System.out.println(fbInput.fieldbusInputs.get(test2[7]));
+
   }
 
 }

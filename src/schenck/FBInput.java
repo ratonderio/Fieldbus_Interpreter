@@ -22,6 +22,9 @@ public class FBInput {
     fieldbusInputs.put("(076A)","Batch Resid. Amount");
     fieldbusInputs.put("(0650)","Status 56+57");
     fieldbusInputs.put("(0770)","Deviation");
+
+
+
   }
 
 }
