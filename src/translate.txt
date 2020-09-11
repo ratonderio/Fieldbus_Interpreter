@@ -1,0 +1,1764 @@
+﻿Command 0
+0100 Select MDP Set 
+0108 Century 
+Command 1
+0110 Year 
+0118 Month 
+Command 2
+0120 Day 
+0128 Hour 
+Command 3
+0130 Minute 
+0138 Second 
+Command 4 LO
+0140 0 - Feeder Start
+0141 1 - Stop Feeder
+0142 2 - Clear Events
+0143 3 - Release
+0144 4 - Volumetric Mode
+0145 5 - Gravimetric
+0146 6 - Reset Totalizer 1 
+0147 7 - Reset Totalizer 2 
+Command 4 HI 
+0148 8 - Volumetric Synchronous
+0149 9 - Moisture Active
+014a A - Moisture OFF
+014b B - Stop Wheel 
+014c C - PLS Gate Feedback
+014d D - Open Gate 
+014e E - STOP Gate 
+014f F - Close Gate 
+Command 5 LO 
+0150 0 - Select Batch
+0151 1 - Deselect Batch
+0152 2 - Abort Batch 
+0153 3 -
+0154 4 -
+0155 5 - Emergency Setpoint ON
+0156 6 - Emergency Setpoint OFF
+0157 7 - Start measuring wheel 
+Command 5 HI 
+0158 8 - Filling Start 
+0159 9 - Filling Stop 
+015a A - Emptying Start 
+015b B - Emptying Stop 
+015c C -
+015d D -
+015e E - Particip. Prefeeder 
+015f F - Stop Prefeeder 
+Command 6 LO 
+0160 0 - Start Zero Check
+0161 1 - Start Span Check
+0162 2 - Accept Correction
+0163 3 - CANCEL Check Meas.
+0164 4 - Source Check Enable
+0165 5 - Ext. Cor. Tare acqu.
+0166 6 - Ext.Cor. Range acqu.
+0167 7 - Start External Check
+Command 6 HI 
+0168 8 - Automatic Bin Control 
+0169 9 - Manual Bin Control 
+016a A - Bin Controller Manual Start
+016b B - Bin Controller Manual Stop
+016c C - CO: BIN Controller Optimization
+016d D - Print Check Result 
+016e E - Time Elements Preassign
+016f F - Initialise Time Elements
+Command 7 LO
+0170 0 - TW: Tare
+0171 1 - >0< Zero Set 
+0172 2 - CW: Span Calibration
+0173 3 - LB: Pulses/Belt 
+0174 4 - DAE Adjustment
+0175 5 - Linearization P1
+0176 6 - Linearization P2
+0177 7 - Linearization P3
+Command 7 HI
+0178 8 - Linearization P4
+0179 9 - CV: Vol. Discharge Adaption
+017a A - CG: Optimize Controller
+017b B - Apply
+017c C - Cancel
+017d D - Time Acquire
+017e E - TB: Tare 
+017f F - CB: Weight Check 
+Command 8 LO 
+0180 0 - DO: PLC 1
+0181 1 - DO: PLC 2
+0182 2 - DO: PLC 3
+0183 3 - DO: PLC 4
+0184 4 - DO: PLC 5
+0185 5 - DO: PLC 6
+0186 6 - DO: PLC 7
+0187 7 - DO: PLC 8
+Command 8 HI
+0188 8 - Batch Record 
+0189 9 -
+018a A - Totalizer Record
+018b B -
+018c C -
+018d D -
+018e E - Log-on EasyServe 
+018f F - Disconnect EasyServe not FB
+Command 9 LO 
+0190 0 - Start Keyboard Mode
+0191 1 - Stop Keyboard Mode
+0192 2 - Start Simulation
+0193 3 - Stop Simulation
+0194 4 - Load Factory Defaults 
+0195 5 - CFC: Init Check
+0196 6 - Manual Gate Control 
+0197 7 - Automatic Gate Control 
+Command 9 HI 
+0198 8 - Dead Time P active 
+0199 9 - Dead Time P not act. 
+019a A - Dead Time P Clock ON 
+019b B - Dead Time P Clock OFF 
+019c C - Dead Time ON/OFF active
+019d D - Dead Time ON/OFF deactivated
+019e E - Dead Time I/O Clock ON
+019f F - Dead Time I/O Clock OFF
+Command 10 LO
+01a0 0 -
+01a1 1 -
+01a2 2 -
+01a3 3 -
+01a4 4 -
+01a5 5 -
+01a6 6 -
+01a7 7 -
+Command 10 HI 
+01a8 8 -
+01a9 9 -
+01aa A - Reset batch total
+01ab B - Echo: Bin Filling Stopped
+01ac C - Start Feeder stat.
+01ad D -
+01ae E -
+01af F -
+Command 11 LO 
+01b0 Ingredient No. 
+Command 11 HI 
+01b8 8 -
+01b9 9 -
+01ba A -
+01bb B -
+01bc C - Capacity Rate
+01bd D - Copy MDP Block
+01be E – CP: Feeder Capacity Adaption
+01bf F - DI: BIC freeze 
+Command 12 LO 
+01c0 0 -
+01c1 1 - Load Custom Defaults
+01c2 2 -
+01c3 3 -
+01c4 4 -
+01c5 5 -
+01c6 6 -
+01c7 7 -
+Command 12 HI 
+01c8 8 -
+01c9 9 -
+01ca A -
+01cb B - Start Data Logging
+01cc C - Stop Data Logging
+01cd D - Clear Data Log File
+01ce E -
+01cf F -
+Command 13 LO 
+01d0 0 -
+01d1 1 -
+01d2 2 - TD: Control speed adaption
+01d3 3 - Bin Weigher Adaption
+01d4 4 - TSBW: Tare
+01d5 5 - CSBW: Weight Check
+01d6 6 -
+01d7 7 - Enable Local Mode 
+Command 13 HI 
+01d8 8 -
+01d9 9 -
+01da A - IDMS Start
+01db B - IDMS Run Reverse 
+01dc C - IDMS Stop
+01dd D -
+01de E -
+01df F -
+Command 14 LO 
+01e0 0 -
+01e1 1 - Apply density
+01e2 2 - OS: Offset of control magnitude
+01e3 3 - BC: Capacity Adaption Feed Hopper
+01e4 4 - Refill Preparation finished
+01e5 5 -
+01e6 6 -
+01e7 7 -
+Command 14 HI 
+01e8 8 -
+01e9 9 -
+01ea A -
+01eb B -
+01ec C -
+01ed D -
+01ee E -
+01ef F -
+0250 Serial Setpoint kg/h 
+0252 Serial Batch Setpoint kg
+0254 00596
+0256 Batch No. 
+0258 AO: PLC 1 mA 
+025a AO: PLC 2 mA 
+025c Span Correction Value 
+025e Zero Correction Value kg/h 
+0260 Difference Flow Rate kg/h
+0262 BIN: Fill Weight kg
+0264 00612
+0266 BIN: Setpoint kg 
+0268 MDP block source 
+026a MDP block destination 
+026c QA Serial Setpoint kg/m 
+026e 00622
+0270 00624
+0272 Belt Load 2nd Bridge kg/m 
+0274 Weight on 1st LC kg/m 
+0276 Weight on 2nd LC kg/m 
+0278 00632
+027a 00634
+027c 00636
+027e 00638
+Status 0
+02d0 Feeder Type 
+02d8 SW Revision 
+Status 1
+02e0 SW Version LOW 
+02e8 SW Version HIGH 
+Status 2 LO
+02f0 0 - Feeder On 
+02f1 1 - No Release 
+02f2 2 - Counter active 
+02f3 3 - Volumetric Mode 
+02f4 4 - Selected Language OK 
+02f5 5 - Summary Alarm 
+02f6 6 - Summary Warning 
+02f7 7 - Calibration active 
+Status 2 HI
+02f8 8 - Normal Mode 
+02f9 9 - OP Mode 
+02fa A - Local Mode 
+02fb B - Simulation Mode 
+02fc C - Volumetric Start-Up 
+02fd D - Wheel Running
+02fe E - Measuring Delay
+02ff F - Event: Setpoint Limited 
+Status 3 LO
+0300 0 - Batch selected
+0301 1 - Batch active
+0302 2 - Batch Dribble Feed
+0303 3 -
+0304 4 - English units active 
+0305 5 - Dead Time active 
+0306 6 - Dead Time Setpoint active
+0307 7 - Dead Time ON/OFF active
+Status 3 HI
+0308 8 - TW: Tare 
+0309 9 - >0< Zero Set
+030a A - CW: Span Calibration 
+030b B - LB: Pulses/Belt
+030c C - DAE Adjustment 
+030d D - Auto Zero Active
+030e E - CV: Vol. Discharge Adaption
+030f F - CG: Optimize Controller 
+Status 4 LO
+0310 0 - Measuring System
+0311 1 - Measuring Direction UP
+0312 2 - Filling active
+0313 3 - Discharging active 
+0314 4 - Gate open
+0315 5 - Gate closed
+0316 6 -
+0317 7 - Bin Weigher Active
+Status 4 HI
+0318 8 - Limit: Actual Flow Rate MAX
+0319 9 - Limit: Actual Flow Rate MIN
+031a A - Limit: Load MAX 
+031b B - Limit: Load MIN 
+031c C - Limit: Speed MAX
+031d D - Limit: Speed MIN
+031e E - Bin Level MAX
+031f F - Bin Level MIN
+Status 5 LO
+0320 0 - Bin Controller ON 
+0321 1 - Limit: Fill Weight MAX
+0322 2 - Limit: Fill Weight MIN
+0323 3 - Event: Maximum Load
+0324 4 -
+0325 5 - Limit: Speed MAX
+0326 6 - Limit: Speed MIN 
+0327 7 - Expect Acceptance 
+Status 5 HI
+0328 8 - On Stream Calibration 
+0329 9 - Relative Zero Correction Error
+032a A - Absolute Zero Correction Error
+032b B - Relative Span Correction Error
+032c C - Absolute Span Correction Error
+032d D - No Check Release 
+032e E - Prepare Check Meas. 
+032f F - Check Meas. Active 
+Status 6 LO
+0330 0 - English units active 
+0331 1 - Waiting for Confirmation 
+0332 2 - Checkweight Up/Down 
+0333 3 - Parameterization active 
+0334 4 - Linearization P1 
+0335 5 - Linearization P2 
+0336 6 - Linearization P3 
+0337 7 - Linearization P4 
+Status 6 HI
+0338 8 - DO: Gate
+0339 9 - DO: Clean Inlet 
+033a A - Manual Gate Control
+033b B - TB: Tare
+033c C - CB: Weight Check
+033d D - CO: BIN Controller Optimization
+033e E - 2nd Bridge MAX 
+033f F - 2nd Bridge MIN 
+Status 7 LO
+0340 0 - Emergency Setpoint Active
+0341 1 -
+0342 2 -
+0343 3 -
+0344 4 - TSBW: Tare 
+0345 5 - CSBW: Weight Check 
+0346 6 -
+0347 7 -
+Status 7 HI
+0348 8 - Moisture Active 
+0349 9 - Moisture MAX 
+034a A - Moisture Error 
+034b B - Belt Load Controller 
+034c C - EasyServe active 
+034d D - EasyServe Logged-in 
+034e E -
+034f F -
+Status 8 LO
+0350 0 - Capacity Rate 
+0351 1 - DO: Pre-cut-off
+0352 2 -
+0353 3 -
+0354 4 - Bin 2 Filling 
+0355 5 -
+0356 6 - Second Bin Weigher Active
+0357 7 - Bin Filling
+Status 8 HI
+0358 8 - DO: Control Started 
+0359 9 - No Summary Alarm 
+035a A - No Summary Warning 
+035b B - Totalizer 1 Output
+035c C - No Deviation 
+035d D - Ready for Start
+035e E - No Relative Zero Correction Error
+035f F - No Absolute Zero Correction Error
+Status 9 LO
+0360 0 - No Relative Span Correction Error
+0361 1 - No Absolute Span Correction Error
+0362 2 - Bin Weigher Adaption 
+0363 3 -
+0364 4 - CP: Feeder Capacity Adaption
+0365 5 - DI: BIC freeze
+0366 6 - TD: Control speed Adaption
+0367 7 -
+Status 9 HI
+0368 8 -
+0369 9 -
+036a A -
+036b B -
+036c C -
+036d D -
+036e E -
+036f F -
+Status 10 LO
+0370 0 - Event: Memory SY01
+0371 1 - Event: Communication VCU20100-Unit 2 SY02 
+0372 2 - Event: Communication VCU20100-Unit 3 SY03 
+0373 3 - Event: Communication HMI 1 SY04
+0374 4 - Event: Communication HMI 2 SY05
+0375 5 - Event: Communication HMI 3 SY06
+0376 6 - Event: Communication VHM serial SY07
+0377 7 - Event: Cyclic Communication SY08
+Status 10 HI
+0378 8 - Event: EtherNet/IP not licensed
+0379 9 - Event: Acyclic Communication SY10
+037a A -
+037b B -
+037c C - Event: Bluetooth channel broken SY13
+037d D -
+037e E - Event: Communication VMO20100-Unit 1 SY15 
+037f F - Event: Communication VMO20100-Unit 2 SY16 
+Status 11 LO
+0380 0 - Event: Setpoint Limited SC01
+0381 1 - Event: Stand-By SC02
+0382 2 - Event: Maint.Feeder Run SC03
+0383 3 - Event: Maint. Electric SC04
+0384 4 - Event: External Event 1 SC05
+0385 5 - Event: External Event 2 SC06
+0386 6 - Event: DAE active SC07
+0387 7 - Event: DAE Fault SC08
+Status 11 HI
+0388 8 - Event: Gate Feedback SC09 
+0389 9 - Event: T_Volum. SC10 
+038a A - Event: External Event 3 SC11
+038b B - Event: External Event 4 SC12
+038c C - Event: Discharge Gate SC13 
+038d D - Event: Gate OPEN Time > MAX SC14
+038e E - Event: Batching Time > MAX SC15
+038f F - Event: Wrong Rotation Direction SC16
+Status 12 LO
+0390 0 - Event: Power Failure WE01
+0391 1 - Event: NAMUR Error VCU1-DI6 WE02
+0392 2 - Event: NAMUR Error VCU1-DI7 WE03
+0393 3 - Event: NAMUR Error VCU2-DI6 WE04 
+0394 4 - Event: NAMUR Error VCU2-DI7 WE05 
+0395 5 - Event: NAMUR Error VCU3-DI6 WE06 
+0396 6 - Event: NAMUR Error VCU3-DI7 WE07 
+0397 7 - Event: Analog Input < Offset WE08 
+Status 12 HI
+0398 8 -
+0399 9 -
+039a A -
+039b B -
+039c C - Event: NAMUR Error VMO1-DI7 WE13 
+039d D - Event: NAMUR Error VMO2-DI7 WE14 
+039e E -
+039f F -
+Status 13 LO
+03a0 0 - Event: Limit Switch WM01 
+03a1 1 - Event: Slip WM02 
+03a2 2 - Event: Belt Skew WM03
+03a3 3 - Event: Belt Drift WM04
+03a4 4 - Event: Slip 2 WM05 
+03a5 5 - Event: Chain Motion Monitor WM06
+03a6 6 -
+03a7 7 -
+Status 13 HI
+03a8 8 - Event: Motor Start WM09
+03a9 9 -
+03aa A -
+03ab B -
+03ac C - Event: Agitator Overload WM13
+03ad D - Event: Feed Air MAX WM14
+03ae E - Event: Motor blocked WM15
+03af F - Event: Motor Protection Switch WM16
+Status 14 LO
+03b0 0 -
+03b1 1 -
+03b2 2 - Event: Feed Air MIN MF03 
+03b3 3 - Event: Purge Air MIN MF04 
+03b4 4 - Event: Moisture MAX MF05
+03b5 5 - Event: Out of Tolerance MF06
+03b6 6 - Event: Batch setpoint Limit MF07
+03b7 7 - Event: Communication VVC MF08
+Status 14 HI
+03b8 8 - Event: No No-motion MF09
+03b9 9 - Event: MAX Tolerance Exceeded MF10
+03ba A - Event: MIN Tolerance Exceeded MF11
+03bb B - Event: Material Amount MF12 
+03bc C - Event: Temperature-MAX MF13
+03bd D -
+03be E - Event: Pressure Blower MF15
+03bf F - Event: Press. Cooling MF16
+Status 15 LO
+03c0 0 - Event: No Release IL01
+03c1 1 - Event: Mechanics IL02
+03c2 2 - Event: Electricity IL03
+03c3 3 - Event: Mechatronics IL04
+03c4 4 - Event: Not Ready IL05
+03c5 5 - Event: Not Ready for Start IL06
+03c6 6 – Event: Communic. Bluetooth Channel 1 IL07
+03c7 7 - Event: Communic. Bluetooth Channel 2 IL08
+Status 15 HI
+03c8 8 - Event: Filling disabled IL09
+03c9 9 - Event: FCB-Error IL10
+03ca A - Event: Wrong System Time IL11
+03cb B -
+03cc C - Event: Adjustment terminated IL13
+03cd D - Event: Protection Interlocking not act. IL14
+03ce E - Event: No Bin-Cone-Aeration Release IL15
+03cf F -
+Status 16 LO
+03d0 0 - Event: Controller Limited CO01
+03d1 1 - Event: Flow Gate MIN CO02
+03d2 2 - Event: Flow Gate MAX CO03
+03d3 3 - Event: Bin Level MAX Sensor CO04 
+03d4 4 - Event: Volum. caused by LC-Error CO05 
+03d5 5 -Event: Flow Gate MAX B CO06 
+03d6 6 -
+03d7 7 -
+Status 16 HI
+03d8 8 -
+03d9 9 - Event: Flow Gate MIN B CO10
+03da A - Event: Correction MAX CO11
+03db B - Event: Limit Gain CO12
+03dc C - Event: ShakeControl VVC CO13
+03dd D - Event: Helix Speed Limited CO14
+03de E - Event: Intermediate circuit voltage VVC CO15
+03df F - Event: Short circuit VVC CO16
+Status 17 LO
+03e0 0 - Event: Minimum Check Quantity CH01
+03e1 1 - Event: Minimum Fill Weight CH02
+03e2 2 - Event: Maximum Fill Weight CH03
+03e3 3 - Event: Absolute Zero Correction Error CH04
+03e4 4 - Event: Relative Zero Correction Error CH05
+03e5 5 - Event: Absolute Span Correction Error CH06
+03e6 6 - Event: Relative Span Correction Error CH07
+03e7 7 - Event: Bin Filling Not Stopped CH08
+Status 17 HI
+03e8 8 - Event: No Check Enable CH09
+03e9 9 - Event: Prepare Check Measurement CH10
+03ea A - Event: Expect Acceptance CH11
+03eb B - Event: Check Gate Error CH12
+03ec C - Event: Bin Error CH13
+03ed D - Event: CO-Alarm Silo CH14
+03ee E - Event: Check Setpoint MIN CH15 
+03ef F - Event: Limit Tare CH16
+Status 18 LO
+03f0 0 - Event: Error LC Input CA01
+03f1 1 - Event: Frequency Input CA02
+03f2 2 - Event: Error LC Input Bin CA03 
+03f3 3 - Event: Error LC Input 2nd Bridge CA04 
+03f4 4 - Event: Linearization Error CA05
+03f5 5 - Event: Zero Correction CA06 
+03f6 6 - Event: Pressure Transmitter fault CA07
+03f7 7 - Event: Capacity Calibration CA08
+Status 18 HI
+03f8 8 -
+03f9 9 - Event: Error LC Input FWC CA10
+03fa A -
+03fb B -
+03fc C -
+03fd D -
+03fe E - Event: Error LC Input 2nd Bin CA15
+03ff F - Event: LC Input > MAX 2nd Bin CA16
+Status 19 LO
+0400 0 - Event: LC Input > MAX HI01
+0401 1 - Event: Actual Flow Rate MAX HI02
+0402 2 - Event: Load MAX HI03
+0403 3 - Event: Speed MAX HI04 
+0404 4 - Event: Deviation HI05
+0405 5 - Event: Fill Weight MAX HI06 
+0406 6 - Event: Speed MAX HI07 
+0407 7 - Event: Hopper overload HI08 
+Status 19 HI
+0408 8 - Event: Maximum Load HI09
+0409 9 - Event: LC Input > MAX Bin HI10 
+040a A - Event: Bin Level MAX HI11 
+040b B - Event: Bin Level MAX HI12
+040c C - Event: FC-MAX Limit HI13
+040d D - Event: Pressure Transmitter > MAX HI14
+040e E - Event: MAX 2nd Bin HI15
+040f F - Event: Pressure-MAX HI16
+Status 20 LO
+0410 0 - Event: LC Input < MIN LO01 
+0411 1 - Event: Actual Flow Rate MIN LO02
+0412 2 - Event: Load MIN LO03
+0413 3 - Event: Speed MIN LO04 
+0414 4 -
+0415 5 - Event: Fill Weight MIN LO06 
+0416 6 - Event: Speed MIN LO07
+0417 7 - Event: Hopper load < MIN LO08
+Status 20 HI
+0418 8 - Event: MIN 2nd Bin LO09
+0419 9 - Event: Pressure Transmitter < MIN LO10
+041a A - Event: Bin Level MIN LO11 
+041b B - Event: 2nd Bridge MIN LO12
+041c C - Event: FC-MIN Limit LO13
+041d D - Event: FC-Speed < MIN LO14
+041e E -
+041f F - Event: Pressure-MIN LO16
+Status 21 LO 
+0420 0 - Event: Memory SY01
+0421 1 - Event: Communication VCU20100-Unit 2 SY02 
+0422 2 - Event: Communication VCU20100-Unit 3 SY03 
+0423 3 - Event: Communication HMI 1 SY04
+0424 4 - Event: Communication HMI 2 SY05
+0425 5 - Event: Communication HMI 3 SY06
+0426 6 - Event: Communication VHM serial SY07
+0427 7 - Event: Cyclic Communication SY08
+Status 21 HI
+0428 8 -
+0429 9 - Event: Acyclic Communication SY10
+042a A -
+042b B -
+042c C - Event: Bluetooth channel Broken SY13
+042d D -
+042e E - Event: Communication VMO20100-Unit 1 SY15 
+042f F - Event: Communication VMO20100-Unit 2 SY16 
+Status 22 LO
+0430 0 - Event: Setpoint Limited SC01
+0431 1 - Event: Stand-By SC02
+0432 2 - Event: Maint.Feeder Run SC03
+0433 3 - Event: Maint. Electric SC04
+0434 4 - Event: External Event 1 SC05
+0435 5 - Event: External Event 2 SC06
+0436 6 - Event: DAE active SC07
+0437 7 - Event: DAE Fault SC08
+Status 22 HI
+0438 8 - Event: Gate Feedback SC09 
+0439 9 - Event: T_Volum. SC10 
+043a A - Event: External Event 3 SC11
+043b B - Event: External Event 4 SC12
+043c C - Event: Discharge Gate SC13 
+043d D - Event: Gate OPEN Time > MAX SC14
+043e E - Event: Batching Time > MAX SC15
+043f F - Event: Wrong Rotation Direction SC16
+Status 23 LO
+0440 0 - Event: Power Failure WE01
+0441 1 - Event: NAMUR Error VCU1-DI6 WE02
+0442 2 - Event: NAMUR Error VCU1-DI7 WE03
+0443 3 - Event: NAMUR Error VCU2-DI6 WE04 
+0444 4 - Event: NAMUR Error VCU2-DI7 WE05 
+0445 5 - Event: NAMUR Error VCU3-DI6 WE06 
+0446 6 - Event: NAMUR Error VCU3-DI7 WE07 
+0447 7 - Event: Analog Input < Offset WE08 
+Status 23 HI
+0448 8 -
+0449 9 -
+044a A -
+044b B -
+044c C - Event: NAMUR Error VMO1-DI7 WE13 
+044d D - Event: NAMUR Error VMO2-DI7 WE14 
+044e E -
+044f F -
+Status 24 LO
+0450 0 - Event: Limit Switch WM01 
+0451 1 - Event: Slip WM02 
+0452 2 - Event: Belt Skew WM03
+0453 3 - Event: Belt Drift WM04
+0454 4 - Event: Slip 2 WM05 
+0455 5 - Event: Chain Motion Monitor WM06
+0456 6 -
+0457 7 -
+Status 24 HI
+0458 8 - Event: Motor Start WM09
+0459 9 -
+045a A -
+045b B -
+045c C - Event: Agitator Overload WM13
+045d D - Event: Feed Air MAX WM14
+045e E - Event: Motor blocked WM15
+045f F - Event: Motor Protection Switch WM16
+Status 25 LO
+0460 0 -
+0461 1 -
+0462 2 - Event: Feed Air MIN MF03 
+0463 3 - Event: Purge Air MIN MF04 
+0464 4 - Event: Moisture MAX MF05
+0465 5 - Event: Out of Tolerance MF06
+0466 6 - Event: Batch setpoint Limit MF07
+0467 7 - Event: Communication VVC MF08
+Status 25 HI
+0468 8 - Event: No No-motion MF09
+0469 9 - Event: MAX Tolerance Exceeded MF10
+046a A - Event: MIN Tolerance Exceeded MF11
+046b B - Event: Material Amount MF12 
+046c C - Event: Temperature-MAX MF13
+046d D -
+046e E - Event: Pressure Blower MF15
+046f F - Event: Press. Cooling MF16
+Status 26 LO
+0470 0 - Event: No Release IL01
+0471 1 - Event: Mechanics IL02
+0472 2 - Event: Electricity IL03
+0473 3 - Event: Mechatronics IL04
+0474 4 - Event: Not Ready IL05
+0475 5 - Event: Not Ready for Start IL06
+0476 6 - Event: Communic. Bluetooth Channel 1 IL07
+0477 7 - Event: Communic. Bluetooth Channel 2 IL08
+Status 26 HI
+0478 8 - Event: Filling disabled IL09
+0479 9 - Event: FCB-Error IL10
+047a A - Event: Wrong System Time IL11
+047b B -
+047c C - Event: Adjustment terminated IL13
+047d D - Event: Protection Interlocking not act. IL14
+047e E - Event: No Bin-Cone-Aeration Release IL15
+047f F -
+Status 27 LO
+0480 0 - Event: Controller Limited CO01
+0481 1 - Event: Flow Gate MIN CO02
+0482 2 - Event: Flow Gate MAX CO03
+0483 3 - Event: Bin Level MAX Sensor CO04 
+0484 4 - Event: Volum. caused by LC-Error CO05 
+0485 5 - Event: Flow Gate MAX B CO06 
+0486 6 -
+0487 7 -
+Status 27 HI
+0488 8 -
+0489 9 - Event: Flow Gate MIN B CO10
+048a A - Event: Correction MAX CO11
+048b B - Event: Limit Gain CO12
+048c C - Event: ShakeControl VVC CO13
+048d D - Event: Helix Speed Limited CO14
+048e E - Event: Intermediate circuit voltage VVC CO15
+048f F - Event: Short circuit VVC CO16
+Status 28 LO
+0490 0 - Event: Minimum Check Quantity CH01
+0491 1 - Event: Minimum Fill Weight CH02
+0492 2 - Event: Maximum Fill Weight CH03
+0493 3 - Event: Absolute Zero Correction Error CH04
+0494 4 - Event: Relative Zero Correction Error CH05
+0495 5 - Event: Absolute Span Correction Error CH06
+0496 6 - Event: Relative Span Correction Error CH07
+0497 7 - Event: Bin Filling Not Stopped CH08
+Status 28 HI
+0498 8 - Event: No Check Enable CH09
+0499 9 - Event: Prepare Check Measurement CH10
+049a A - Event: Expect Acceptance CH11
+049b B - Event: Check Gate Error CH12
+049c C - Event: Bin Error CH13
+049d D - Event: CO-Alarm Silo CH14
+049e E - Event: Check Setpoint MIN CH15
+049f F - Event: Limit Tare CH16
+Status 29 LO
+04a0 0 - Event: Error LC Input CA01
+04a1 1 - Event: Frequency Input CA02
+04a2 2 - Event: Error LC Input Bin CA03 
+04a3 3 - Event: Error LC Input 2nd Bridge CA04 
+04a4 4 - Event: Linearization Error CA05
+04a5 5 - Event: Zero Correction CA06 
+04a6 6 - Event: Pressure Transmitter Fault CA07
+04a7 7 - Event: Capacity Calibration CA08
+Status 29 HI
+04a8 8 -
+04a9 9 - Event: Error LC Input FWC CA10
+04aa A -
+04ab B -
+04ac C -
+04ad D -
+04ae E - Event: Error LC Input 2nd Bin CA15
+04af F - Event: LC Input > MAX 2nd Bin CA16
+Status 30 LO
+04b0 0 - Event: Error LC Input HI01
+04b1 1 - Event: Actual Flow Rate MAX HI02
+04b2 2 - Event: Load MAX HI03
+04b3 3 - Event: Speed MAX HI04 
+04b4 4 - Event: Deviation HI05
+04b5 5 - Event: Fill Weight MAX HI06 
+04b6 6 - Event: Speed MAX HI07 
+04b7 7 - Event: Hopper overload HI08 
+Status 30 HI
+04b8 8 - Event: Maximum Load HI09
+04b9 9 - Event: LC Input > MAX Bin HI10 
+04ba A - Event: Bin Level MAX HI11 
+04bb B - Event: 2nd Bridge MAX HI12
+04bc C - Event: FC-MAX Limit HI13
+04bd D - Event: Pressure Transmitter > MAX HI14
+04be E - Event: MAX 2nd Bin HI15
+04bf F - Event: Pressure-MAX HI16
+Status 31 LO
+04c0 0 - Event: LC Input < MIN LO01 
+04c1 1 - Event: Actual Flow Rate MIN LO02
+04c2 2 - Event: Load MIN LO03
+04c3 3 - Event: Speed MIN LO04 
+04c4 4 -
+04c5 5 - Event: Fill Weight MIN LO06 
+04c6 6 - Event: Speed MIN LO07
+04c7 7 - Event: Hopper load < MIN LO08
+Status 31 HI
+04c8 8 - Event: MIN 2nd Bin LO09
+04c9 9 - Event: Pressure Transmitter < MIN LO10
+04ca A - Event: Bin Level MIN LO11 
+04cb B - Event: 2nd Bridge MIN LO12
+04cc C - Event: FC-MIN Limit LO13
+04cd D - Event: FC-Speed < MIN LO14
+04ce E -
+04cf F - Event: Pressure-MIN LO16
+Status 32 LO
+04d0 0 - Event: Memory SY01
+04d1 1 - Event: Communication VCU20100-Unit 2 SY02 
+04d2 2 - Event: Communication VCU20100-Unit 3 SY03 
+04d3 3 - Event: Communication HMI 1 SY04
+04d4 4 - Event: Communication HMI 2 SY05
+04d5 5 - Event: Communication HMI 3 SY06
+04d6 6 - Event: Communication VHM serial SY07
+04d7 7 - Event: Cyclic Communication SY08
+Status 32 HI
+04d8 8 -
+04d9 9 - Event: Acyclic Communication SY10
+04da A -
+04db B -
+04dc C - Event: Bluetooth channel broken SY13
+04dd D -
+04de E - Event: Communication VMO20100-Unit 1 SY15 
+04df F - Event: Communication VMO20100-Unit 2 SY16 
+Status 33 LO
+04e0 0 - Event: Setpoint Limited SC01
+04e1 1 - Event: Stand-By SC02
+04e2 2 - Event: Maint.Feeder Run SC03
+04e3 3 - Event: Maint. Electric SC04
+04e4 4 - Event: External Event 1 SC05
+04e5 5 - Event: External Event 2 SC06
+04e6 6 - Event: DAE active SC07
+04e7 7 - Event: DAE Fault SC08
+Status 33 HI
+04e8 8 - Event: Gate Feedback SC09 
+04e9 9 - Event: T_Volum. SC10 
+04ea A - Event: External Event 3 SC11
+04eb B - Event: External Event 4 SC12
+04ec C - Event: Discharge Gate SC13 
+04ed D - Event: Gate OPEN Time > MAX SC14
+04ee E - Event: Batching Time > MAX SC15
+04ef F - Event: Wrong Rotation Direction SC16
+Status 34 LO
+04f0 0 - Event: Power Failure WE01
+04f1 1 - Event: NAMUR Error VCU1-DI6 WE02
+04f2 2 - Event: NAMUR Error VCU1-DI7 WE03
+04f3 3 - Event: NAMUR Error VCU2-DI6 WE04 
+04f4 4 - Event: NAMUR Error VCU2-DI7 WE05 
+04f5 5 - Event: NAMUR Error VCU3-DI6 WE06 
+04f6 6 - Event: NAMUR Error VCU3-DI7 WE07 
+04f7 7 - Event: Analog Input < Offset WE08 
+Status 34 HI
+04f8 8 -
+04f9 9 -
+04fa A -
+04fb B -
+04fc C - Event: NAMUR Error VMO1-DI7 WE13 
+04fd D - Event: NAMUR Error VMO2-DI7 WE14 
+04fe E -
+04ff F -
+Status 35 LO
+0500 0 - Event: Limit Switch WM01 
+0501 1 - Event: Slip WM02 
+0502 2 - Event: Belt Skew WM03
+0503 3 - Event: Belt Drift WM04
+0504 4 - Event: Slip 2 WM05 
+0505 5 - Event: Chain Motion Monitor WM06
+0506 6 -
+0507 7 -
+Status 35 HI
+0508 8 - Event: Motor Start WM09
+0509 9 -
+050a A -
+050b B -
+050c C - Event: Agitator Overload WM13
+050d D - Event: Feed Air MAX WM14
+050e E - Event: Motor blocked WM15
+050f F - Event: Motor Protection Switch WM16
+Status 36 LO
+0510 0 -
+0511 1 -
+0512 2 - Event: Feed Air MIN MF03 
+0513 3 - Event: Purge Air MIN MF04 
+0514 4 - Event: Moisture MAX MF05
+0515 5 - Event: Out of Tolerance MF06
+0516 6 - Event: Batch setpoint Limit MF07
+0517 7 - Event: Communication VVCMF08
+Status 36 HI
+0518 8 - Event: No No-motion MF09
+0519 9 - Event: MAX Tolerance Exceeded MF10
+051a A - Event: MIN Tolerance Exceeded MF11
+051b B - Event: Material Amount MF12 
+051c C - Event: Temperature-MAX MF13
+051d D -
+051e E - Event: Pressure Blower MF15
+051f F - Event: Press. Cooling MF16
+Status 37 LO
+0520 0 - Event: No Release IL01
+0521 1 - Event: Mechanics IL02
+0522 2 - Event: Electricity IL03
+0523 3 - Event: Mechatronics IL04
+0524 4 - Event: Not Ready IL05
+0525 5 - Event: Not Ready for Start IL06
+0526 6 - Event: Communic. Bluetooth Channel 1 IL07 
+0527 7 - Event: Communic. Bluetooth Channel 2 IL08 
+Status 37 HI
+0528 8 - Event: Filling disabled IL09
+0529 9 - Event: FCB-Error IL10
+052a A - Event: Wrong System Time IL11
+052b B - IL12 
+052c C - Event: Adjustment terminated IL13
+052d D - Event: Protection Interlocking not act. IL14
+052e E - Event: No Bin-Cone-Aeration Release IL15
+052f F -
+Status 38 LO
+0530 0 - Event: Controller Limited CO01
+0531 1 - Event: Flow Gate MIN CO02
+0532 2 - Event: Flow Gate MAX CO03
+0533 3 - Event: Bin Level MAX Sensor CO04 
+0534 4 - Event: Volum. caused by LC-Error CO05 
+0535 5 -Event: Flow Gate MAX B CO06 
+0536 6 -
+0537 7 -
+Status 38 HI
+0538 8 -
+0539 9 - Event: Flow Gate MIN B CO10
+053a A - Event: Correction MAX CO11
+053b B - Event: Limit Gain CO12
+053c C - Event: ShakeControl VVC CO13
+053d D - Event: Helix Speed Limited CO14
+053e E - Event: Intermediate circuit voltage VVC CO15
+053f F - Event: Short circuit VVC CO16
+Status 39 LO
+0540 0 - Event: Minimum Check Quantity CH01
+0541 1 - Event: Minimum Fill Weight CH02
+0542 2 - Event: Maximum Fill Weight CH03
+0543 3 - Event: Absolute Zero Correction Error CH04
+0544 4 - Event: Relative Zero Correction Error CH05
+0545 5 - Event: Absolute Span Correction Error CH06
+0546 6 - Event: Relative Span Correction Error CH07
+0547 7 - Event: Bin Filling Not Stopped CH08
+Status 39 HI
+0548 8 - Event: No Check Enable CH09
+0549 9 - Event: Prepare Check Measurement CH10
+054a A - Event: Expect Acceptance CH11
+054b B - Event: Check Gate Error CH12
+054c C - Event: Bin Error CH13
+054d D - Event: CO-Alarm Silo CH14
+054e E - Event: Check Setpoint MIN CH15 
+054f F - Event: Limit Tare CH16
+Status 40 LO
+0550 0 - Event: Error LC Input CA01
+0551 1 - Event: Frequency Input CA02
+0552 2 - Event: Error LC Input Bin CA03 
+0553 3 - Event: Error LC Input 2nd Bridge CA04 
+0554 4 - Event: Linearization Error CA05
+0555 5 - Event: Zero Correction CA06 
+0556 6 - Event: Pressure Transmitter Fault CA07
+0557 7 - Event: Capacity Calibration CA08
+Status 40 HI
+0558 8 -
+0559 9 - Event: Error LC Input FWC CA10
+055a A -
+055b B -
+055c C -
+055d D -
+055e E - Event: Error LC Input 2ndBin CA15
+055f F - Event: LC Input > MAX 2nd Bin CA16
+Status 41 LO
+0560 0 - Event: LC Input > MAX HI01
+0561 1 - Event: Actual Flow Rate MAX
+HI02
+0562 2 - Event: Load MAX HI03
+0563 3 Event: Speed MAX HI04 
+0564 4 - Event: Deviation HI05
+0565 5 - Event: Fill Weight MAX HI06 
+0566 6 - Event: Speed MAX HI07 
+0567 7 - Event: Hopper overload HI08 
+Status 41 HI
+0568 8 - 
+0569 9 - Event: LC Input > MAX Bin HI10 
+056a A - Event: Bin Level MAX HI11 
+056b B - Event: 2nd Bridge MAX HI12
+056c C - Event: FC-MAX Limit HI13
+056d D - Event: Pressure Transmitter > MAX HI14
+056e E - Event: MAX 2nd Bin HI15
+056f F - Event: Pressure-MAX HI16
+Status 42 LO
+0570 0 - Event: LC Input < MIN LO01 
+0571 1 - Event: Actual Flow Rate MIN LO02
+0572 2 - Event: Load MIN LO03
+0573 3 - Event: Speed MIN LO04 
+0574 4 -
+0575 5 - Event: Fill Weight MIN LO06 
+0576 6 - Event: Speed MIN LO07
+0577 7 - Event: Hopper load < MIN LO08
+Status 42 HI
+0578 8 - Event: MIN 2nd Bin LO09
+0579 9 - Event: Pressure Transmitter < MIN LO10
+057a A - Event: Bin Level MIN LO11 
+057b B - Event: 2nd Bridge MIN LO12
+057c C - Event: FC-MIN Limit LO13
+057d D - Event: FC-Speed < MIN LO14
+057e E -
+057f F - Event: Pressure-MIN LO16
+Status 43 LO
+0580 0 - DI1 
+0581 1 - DI2 
+0582 2 - DI3 
+0583 3 - DI4 
+0584 4 - DI5 
+0585 5 - DI6 
+0586 6 - DI7 
+0587 7 -
+Status 43 HI
+0588 8 -
+0589 9 -
+058a A -
+058b B -
+058c C -
+058d D - VCU1 DI6 Error 
+058e E - VCU1 DI7 Error 
+058f F -
+Status 44 LO
+0590 0 -
+0591 1 -
+0592 2 -
+0593 3 -
+0594 4 -
+0595 5 -
+0596 6 -
+0597 7 -
+Status 44 HI
+0598 8 -
+0599 9 -
+059a A -
+059b B -
+059c C -
+059d D -
+059e E -
+059f F -
+Status 45 LO
+05a0 0 - DO1 
+05a1 1 - DO2 
+05a2 2 - DO3 
+05a3 3 - DO4 
+05a4 4 - DO5 
+05a5 5 - DO6 
+05a6 6 - DO7 
+05a7 7 - DO8 
+Status 45 HI
+05a8 8 -
+05a9 9 -
+05aa A -
+05ab B -
+05ac C -
+05ad D -
+05ae E -
+05af F -
+Status 46 LO
+05b0 0 - VCU2 DI1 
+05b1 1 - VCU2 DI2 
+05b2 2 - VCU2 DI3 
+05b3 3 - VCU2 DI4 
+05b4 4 - VCU2 DI5 
+05b5 5 - VCU2 DI6 
+05b6 6 - VCU2 DI7 
+05b7 7 -
+Status 46 HI
+05b8 8 -
+05b9 9 -
+05ba A -
+05bb B -
+05bc C -
+05bd D - VCU2 DI6 Error 
+05be E - VCU2 DI7 Error 
+05bf F -
+Status 47 LO
+05c0 0 - VMO1 DI1 
+05c1 1 - VMO1 DI2 
+05c2 2 - VMO1 DI3 
+05c3 3 - VMO1 DI4 
+05c4 4 - VMO1 DI5 
+05c5 5 - VMO1 DI6 
+05c6 6 - VMO1 DI7 
+05c7 7 -
+Status 47 HI
+05c8 8 -
+05c9 9 -
+05ca A -
+05cb B -
+05cc C -
+05cd D -
+05ce E - VMO1 DI7 Error 
+05cf F -
+Status 48 LO
+05d0 0 - VCU2 DO1 
+05d1 1 - VCU2 DO2 
+05d2 2 - VCU2 DO3 
+05d3 3 - VCU2 DO4 
+05d4 4 - VCU2 DO5 
+05d5 5 - VCU2 DO6 
+05d6 6 - VCU2 DO7 
+05d7 7 - VCU2 DO8 
+Status 48 HI
+05d8 8 - VMO1 DO1 
+05d9 9 - VMO1 DO2 
+05da A - VMO1 DO3 
+05db B - VMO1 DO4 
+05dc C - VMO1 DO5 
+05dd D -
+05de E -
+05df F -
+Status 49 LO
+05e0 0 - VCU3 DI1 
+05e1 1 - VCU3 DI2 
+05e2 2 - VCU3 DI3 
+05e3 3 - VCU3 DI4 
+05e4 4 - VCU3 DI5 
+05e5 5 - VCU3 DI6 
+05e6 6 - VCU3 DI7 
+05e7 7 -
+Status 49 HI
+05e8 8 -
+05e9 9 -
+05ea A -
+05eb B -
+05ec C -
+05ed D - VCU3 DI6 Error 
+05ee E - VCU3 DI7 Error 
+05ef F -
+Status 50 LO
+05f0 0 - VMO2 DI1 
+05f1 1 - VMO2 DI2 
+05f2 2 - VMO2 DI3 
+05f3 3 - VMO2 DI4 
+05f4 4 - VMO2 DI5 
+05f5 5 - VMO2 DI6 
+05f6 6 - VMO2 DI7 
+05f7 7 -
+Status 50 HI
+05f8 8 -
+05f9 9 -
+05fa A -
+05fb B -
+05fc C -
+05fd D -
+05fe E - VMO2 DI7 Error 
+05ff F -
+Status 51 LO
+0600 0 - VCU3 DO1 
+0601 1 - VCU3 DO2 
+0602 2 - VCU3 DO3 
+0603 3 - VCU3 DO4 
+0604 4 - VCU3 DO5 
+0605 5 - VCU3 DO6 
+0606 6 - VCU3 DO7 
+0607 7 - VCU3 DO8 
+Status 51 HI
+0608 8 - VMO2 DO1 
+0609 9 - VMO2 DO2 
+060a A - VMO2 DO3 
+060b B - VMO2 DO4 
+060c C - VMO2 DO5 
+060d D -
+060e E -
+060f F -
+Status 52 LO
+0610 0 - Event: + Group 
+0611 1 -
+0612 2 -
+0613 3 -
+0614 4 -
+0615 5 -
+0616 6 -
+0617 7 -
+Status 52 HI
+0618 8 - Event: Class + Quit 
+0619 9 -
+061a A -
+061b B -
+061c C -
+061d D -
+061e E -
+061f F -
+Status 53 LO
+0620 0 -
+0621 1 -
+0622 2 -
+0623 3 -
+0624 4 -
+0625 5 -
+0626 6 -
+0627 7 -
+Status 53 HI
+0628 8 -
+0629 9 -
+062a A -
+062b B -
+062c C -
+062d D -
+062e E -
+062f F -
+Status 54
+0630 Century 
+0638 Year 
+Status 55
+0640 Month 
+0648 Day 
+Status 56
+0650 Hour 
+0658 Minute 
+Status 57
+0660 Second 
+0668 Activated Material 
+Status 58 LO
+0670 0 - Reserved 
+0671 1 -
+0672 2 -
+0673 3 -
+0674 4 -
+0675 5 -
+0676 6 -
+0677 7 -
+Status 58 HI
+0678 8 - Reserved 
+0679 9 -
+067a A -
+067b B -
+067c C -
+067d D -
+067e E -
+067f F -
+Status 59 LO
+0680 0 -
+0681 1 -
+0682 2 -
+0683 3 -
+0684 4 -
+0685 5 -
+0686 6 -
+0687 7 -
+Status 59 HI
+0688 8 -
+0689 9 -
+068a A -
+068b B -
+068c C -
+068d D -
+068e E -
+068f F -
+Status 60 LO
+0690 0 - Current Ingredient 
+0691 1 -
+0692 2 -
+0693 3 -
+0694 4 -
+0695 5 -
+0696 6 -
+0697 7 -
+Status 60 HI
+0698 8 -
+0699 9 -
+069a A -
+069b B -
+069c C -
+069d D -
+069e E -
+069f F -
+Status 61 LO
+06a0 0 - Ingredient No. 1 ON 
+06a1 1 - Ingredient No. 2 ON 
+06a2 2 - Ingredient No. 3 ON 
+06a3 3 - Ingredient No. 4 ON 
+06a4 4 - Ingredient No. 5 ON 
+06a5 5 - Ingredient No. 6 ON 
+06a6 6 – Ingredient No. 7 ON 
+06a7 7 - Ingredient No. 8 ON 
+Status 61 HI
+06a8 8 - Ingredient No. 9 ON 
+06a9 9 - Ingredient No. 10 ON 
+06aa A - Full Feed ON 
+06ab B - Dribble Feed Sequential ON
+06ac C - Agitator ON 
+06ad D - Batch active 
+06ae E -
+06af F -
+Status 62 LO
+06b0 0 -
+06b1 1 -
+06b2 2 -
+06b3 3 -
+06b4 4 -
+06b5 5 -
+06b6 6 -
+06b7 7 -
+Status 62 HI
+06b8 8 -
+06b9 9 -
+06ba A -
+06bb B -
+06bc C -
+06bd D -
+06be E -
+06bf F -
+Status 63 LO
+06c0 0 -
+06c1 1 -
+06c2 2 -
+06c3 3 -
+06c4 4 -
+06c5 5 -
+06c6 6 -
+06c7 7 -
+Status 63 HI
+06c8 8 -
+06c9 9 -
+06ca A -
+06cb B -
+06cc C -
+06cd D -
+06ce E -
+06cf F -
+Status 64 LO
+06d0 0 - Setpoint via OP 
+06d1 1 - OS: Offset of control magnitude
+06d2 2 - BC: Capacity Adaption Feed Hopper
+06d3 3 - TD: Control speed adaption
+06d4 4 -
+06d5 5 - Events are acknowledged 
+06d6 6 - Summary Warning 1 
+06d7 7 - Summary Warning 2 
+Status 64 HI
+06d8 8 -
+06d9 9 - MIN Control Level 
+06da A - MAX Control Level 
+06db B - Calibration Success
+06dc C - Calibration Fail
+06dd D - Refill Preparation 
+06de E – Refill sequence active 
+06df F -
+Status 65 LO
+06e0 0 -
+06e1 1 -
+06e2 2 -
+06e3 3 -
+06e4 4 -
+06e5 5 -
+06e6 6 -
+06e7 7 -
+Status 65 HI
+06e8 8 -
+06e9 9 -
+06ea A -
+06eb B -
+06ec C -
+06ed D -
+06ee E -
+06ef F -
+Status 66 LO
+06f0 0 - MDP1 
+06f1 1 - MDP2 
+06f2 2 - MDP3 
+06f3 3 - MDP4 
+06f4 4 - MDP5 
+06f5 5 -
+06f6 6 -
+06f7 7 -
+Status 66 HI
+06f8 8 -
+06f9 9 -
+06fa A -
+06fb B -
+06fc C -
+06fd D -
+06fe E -
+06ff F -
+Status 67 LO
+0700 0 -
+0701 1 -
+0702 2 -
+0703 3 -
+0704 4 -
+0705 5 -
+0706 6 -
+0707 7 -
+Status 67 HI
+0708 8 -
+0709 9 -
+070a A -
+070b B -
+070c C -
+070d D -
+070e E -
+070f F -
+Status 68 LO
+0710 0 - FB Event 01 
+0711 1 - FB Event 02 
+0712 2 - FB Event 03 
+0713 3 - FB Event 04 
+0714 4 - FB Event 05 
+0715 5 - FB Event 06 
+0716 6 - FB Event 07 
+0717 7 - FB Event 08 
+Status 68 HI
+0718 8 - FB Event 09 
+0719 9 - FB Event 10 
+071a A - FB Event 11 
+071b B - FB Event 12 
+071c C - FB Event 13 
+071d D - FB Event 14 
+071e E - FB Event 15 
+071f F - FB Event 16 
+Status 69 LO
+0720 0 - FB Event 17 
+0721 1 - FB Event 18 
+0722 2 - FB Event 19 
+0723 3 - FB Event 20 
+0724 4 - FB Event 21 
+0725 5 - FB Event 22 
+0726 6 - FB Event 23 
+0727 7 - FB Event 24 
+Status 69 HI
+0728 8 - FB Event 25 
+0729 9 - FB Event 26 
+072a A - FB Event 27 
+072b B - FB Event 28 
+072c C - FB Event 29 
+072d D - FB Event 30 
+072e E - FB Event 31 
+072f F - FB Event 32 
+Status 70 LO
+0730 0 - FCB_DO 01 
+0731 1 - FCB_DO 02 
+0732 2 - FCB_DO 03 
+0733 3 - FCB_DO 04 
+0734 4 - FCB_DO 05 
+0735 5 - FCB_DO 06 
+0736 6 - FCB_DO 07 
+0737 7 - FCB_DO 08 
+Status 70 HI
+0738 8 - FCB_DO 09 
+0739 9 - FCB_DO 10 
+073a A - FCB_DO 11 
+073b B - FCB_DO 12 
+073c C - FCB_DO 13 
+073d D - FCB_DO 14 
+073e E - FCB_DO 15 
+073f F - FCB_DO 16 
+Status 71 LO
+0740 0 - FCB_DO 17 
+0741 1 - FCB_DO 18 
+0742 2 - FCB_DO 19 
+0743 3 - FCB_DO 20 
+0744 4 - FCB_DO 21 
+0745 5 - FCB_DO 22 
+0746 6 - FCB_DO 23 
+0747 7 - FCB_DO 24 
+Status 71 HI
+0748 8 - FCB_DO 25 
+0749 9 - FCB_DO 26 
+074a A - FCB_DO 27 
+074b B - FCB_DO 28 
+074c C - FCB_DO 29 
+074d D - FCB_DO 30 
+074e E - FCB_DO 31 
+074f F - FCB_DO 32 
+6370 0 - Event: VCU23160-Measure Unit VME SY17
+6372 2 - Event: IP Address Conflict SY19
+6380 0 –Event: External Event 5 SC17
+6381 1 - Event: External Event 6 SC18
+63d0 0 - Event: Overcurrent VVC CO17
+63d1 1 - Event: Outside Frequency VVC CO18
+63d2 2 - Event: Sensor error MEMS VVC CO19
+63d3 3 - Event: Deviation VVC CO20
+63d4 4 - Event: Parametrization VVC CO21
+63d5 5 - Event: Sensor ID VVC CO22
+6400 0 -Event: Deviation Pre-Warning HI17
+6401 1 -Event: Convey Pressure MAX HI18
+6411 0 - Event: Convey Pressure MIN LO18
+6420 0 - Event: VCU23160-Measure Unit VME SY17
+6422 2 - Event: IP Address Conflict SY19
+6430 0 - Event: External Event 5 SC17
+6431 1 - Event: External Event 6 SC18
+6480 0 - Event: Overcurrent VVC CO17
+6481 1 - Event: Outside Frequency VVC CO18
+6482 2 - Event: Sensor error MEMS VVC CO19
+6483 3 - Event: Deviation VVC CO20
+6484 4 - Event: Parametrization VVC CO21
+6485 5 - Event: Sensor ID VVC CO22
+64b0 0 - Event: Deviation Pre-Warning HI17 
+64b1 1 - Event: Convey Pressure MAX HI18
+64c1 1 - Event: Convey Pressure MIN LO18
+64d0 0 - Event: VCU23160-Measure Unit VME SY17
+64d2 2 - Event: IP Address Conflict SY19
+64e0 0 - Event: External Event 5 SC17
+64e1 1 - Event: External Event 6 SC18
+6530 0 - Event: Overcurrent VVC CO17
+6531 1 - Event: Outside Frequency VVC CO18
+6532 2 - Event: Sensor error MEMS VVC CO19
+6533 3 - Event: Deviation VVC CO20
+6534 4 - Event: Parametrization VVC CO21
+6535 5 - Event: Sensor ID VVC CO22
+6560 0 - Event: Deviation Pre-Warning HI17 
+6561 1 - Event: Convey Pressure MAX HI18
+6571 1 -Event: Convey Pressure MIN LO18 
+0752 Totalizer 1 kg
+0754 Totalizer 2 kg
+0756 Totalizer 3 kg
+0758 Belt Load kg/m
+075a Load kg
+075c Belt Speed m/s
+075e Speed 1/min 
+0760 Fill Weight kg
+0762 BIN: Fill Weight kg
+0764 Belt Load 2nd Bridge kg/m 
+0766 Setpoint kg/h 
+0768 Batch Actual Value kg
+076a Batch Resid. Amount kg
+076c Perc. setpoint % 
+076e Flow Gate Position % 
+0770 Deviation % 
+0772 Moisture % 
+0774 Corrected Feedrate kg/h 
+0776 Totalizer 1 corrected kg 
+0778 Totalizer 2 corrected kg
+077a Totalizer 3 corrected kg 
+077c BIN: Relative Fill Weight %
+077e BIN: Setpoint kg 
+0780 Analog Output 1 mA 
+0782 Analog Input 1 mA 
+0784 Analog Output 3 mA 
+0786 VCU2: Analog Output 1 mA 
+0788 Analog Input 2 mA 
+078a VCU2: Analog Output 2 mA 
+078c VCU3: Analog Output 1 mA 
+078e VCU2: Analog Input 1 mA 
+0790 VCU2: Analog Output 3 mA 
+0792 Belt Slip mA
+0794 Belt Drift
+0796 Relative Feedrate % 
+0798 Relative Belt Load %
+079a External Setpoint kg/h 
+079c Batch Setpoint kg
+079e Tachometer 1 Hz 
+07a0 Utilization LC % 
+07a2 Loadcell VAP mV/V
+07a4 Loadcell BIC mV/V
+07a6 Loadcell mV/V 
+07a8 Controller Magnitude Y mA
+07aa Relative Fill Weight %
+07ac Calibration Display 1 
+07ae Calibration Display 2 
+07b0 Ys before Linearization % 
+07b2 Ys after Linearization % 
+07b4 DAE Utilization % 
+07b6 Differential of F kg/h 
+07b8 Bypass Adaptation 
+07c0 CFC: Measurement Time s 
+07c2 CFC:of Measurements
+07c4 CFC: Current No 
+07c6 CFC: Mean Delta-F kg 
+07c8 CFC: Mean Flow Rate kg/h 
+07ca CFC: Feed Constancy % 
+07cc Nominal Belt Load kg/m
+07ce CFC: Feed Constancy g 
+07d0 Controller Mag. Yz mA 
+07d2 Controller Mag. Yzi % 
+07d4 Nominal Load kg
+07d6 Unlin. Flow Rate kg/h
+07d8 Actual Tare kg/h 
+07da BIN: Utilization LC %
+07dc BIN: Loadcell mV/V
+07de Controller Mag. Yb mA 
+07e0 Controller Mag. Ybi mA 
+07e2 NAMUR Input DI6 Parts 
+07e4 Relative Zero Correction % 
+07e6 Relative Span Correction % 
+07e8 Contin. Result Z kg 
+07ea Check Result F/Z 
+07ec Check Meas. Time h
+07ee Check Belt Length m
+07f0 Relative Load 2nd Bridge % 
+07f2 2.Br. Loadcell mV/V 
+07f4 2.Bridge Utilization LC % 
+07f6 Controller Mag. Y2 % 
+07f8 Difference Flow Rate kg/h 
+07fa Relative Setpoint % 
+07fc Relative Load %
+0800 Check Measurem. Window % 
+0802 AO: Controller Magnitude 
+0804 Batch No. 
+0806 Ingredient total 1 kg 
+0808 Ingredient total 2 kg 
+080a Ingredient total 3 kg 
+080c Ingredient total 4 kg 
+080e Ingredient total 5 kg 
+0810 Ingredient total 6 kg 
+0812 Ingredient total 7 kg 
+0814 Ingredient total 8 kg 
+0816 Ingredient total 9 kg 
+0818 Ingredient total 10 kg 
+081a Batch total kg 
+081c Tachometer 2 Hz 
+081e Corr. Rel. Feedrate % 
+0820 Belt Load Unlin. kg/m
+0822 2-Sensor Slip %
+0824 Batch Setpoint kg 
+0826 Batch No. 
+0828 Ingredient No. 
+082a NAMUR Input DI7
+082c 02092
+0866 Analog Output 2 mA
+0868 Analog Input 1 mA 
+086e Pulses Sensor PULSE
+0872 FC act. Deviation %
+0876 Compensation Weight kg
+0878 Utilize Pressure Sensor %
+087a Fill Weight not comp kg
+087c Compensation Pressure Bar
+087e Pressure: Raw mV/V
+0880 Frequence DI_7 Hz
+0886 Helix Speed Setpoint % 
+0888 Helix Setpoint S1 % 
+088a Helix Setpoint S2 % 
+088c Deviation S1 %
+088e Deviation S2 % 
+0890 Controller Mag. S1 mA
+0892 Controller Mag. S2 mA 
+0894 Load Helix inlet kg 
+0896 Helix Load raw kg 
+0898 Total Weight kg 
+08a4 Analog Output 2 mA 
+08a6 Analog Input 1 mA 
+08a8 VCU2: Analog Output 2 mA 
+08aa VCU2: Analog Input 1 mA 
+08ac Deviation abs. % 
+08ae VCU3: Analog Input 1 mA 
+08b0 Loadcell 1 mV/V
+08b2 Loadcell 2 mV/V
+08b4 Utilization LC 2 %
+08be Analog Input 2 mA 
+08d0 Analog Output 3 mA 
+08fc Belt Load average kg/m 
+08fe VCU2: Analog Input 2 mA 
+0900 VCU3: Analog Input 2 mA 
+0902 VCU2: Analog Output 3 mA 
+0904 VCU3: Analog Output 3 mA 
+0906 Belt Motion Counter
+0908 Digital Mode output
+090a CPU Temperature °C 
+090c Belt Speed %
+090e Totalizer 1 rounded
+0910 LC-Raw Helixinlet mV/V 
+0912 Beladung Abzug
+0914 VCU3: Analog Output 2 mA 
+0916 Helix Load kg 
+0918 rel. Helix Load % 
+091a Pulses Helix 1 Imp 
+091c Pulses/Revolution Helix 1 Imp 
+091e Pulses Helix 2 Imp 
+0920 Pulses/Revolution Helix 2 Imp 
+0922 Difference-Pulses Helix 1/2 Imp 
+0924 Pulses/Revolution Helix 1/2 Imp 
+0926 Difference-Angle Helix 1/2 Degrees 
+0928 Pulses Belt PULSE
+092a Relative Batch Actual Value % 
+092c Process Temperature °C 
+092e Bluetooth 1 LC mV/V 
+0930 Bluetooth 2 LC mV/V 
+0932 Bluetooth 1 Temp. °C 
+0934 Bluetooth 2 Temp. . °C 
+0936 B:Flow Gate Position % 
+0942 B-S: Deviation % 
+0944 B: Deviation kg
+0946 Bluetooth 1 Reset 
+0948 Bluetooth 2 Reset 
+094c BROH before band rejection kg 
+094e TDIFF_act s 
+0950 TN_act s 
+0952 BIN 2: Fill Weight kg 
+0954 BIN 2: Relative Fill Weight % 
+0958 FCB_AO 01 
+095a FCB_AO 02 
+095c FCB_AO 03 
+095e FCB_AO 04 
+0960 FCB_AO 05 
+0962 FCB_AO 06 
+0964 FCB_AO 07 
+0966 FCB_AO 08 
+0968 FCB_AO 09 
+096a FCB_AO 10 
+096c FCB_AO 11 
+096e FCB_AO 12 
+0970 FCB_AO 13 
+0972 FCB_AO 14 
+0974 FCB_AO 15 
+0976 FCB_AO 16 
+0978 FCB_AO 17 
+097a FCB_AO 18 
+097c FCB_AO 19 
+097e FCB_AO 20 
+1d00 BIN: Error Roh kg/h 
+1d02 BIN: Error kg/h 
+1d04 Contin. Result F kg 
+1d06 Correction Gain 
+1d08 Correction Tare kg 
+1d0a BIN Adaption raw 
+1d0c BIN Adaption 
+1d0e QA: Coefficient kg/h/mA 
+1d10 QA: Coefficient-RAW kg/h/mA 
+1d12 Difference 1.WB-2.WB kg/m 
+1d14 QA-Setpoint kg/m 
+1d16 Input of Differential Filter kg/h 
+1d18 VMO1: Analog Output 1 mA 
+1d1a VMO1: Analog Output 2 mA 
+1d1c VMO1: Analog Output 3 mA 
+1d1e VMO1: Analog Input 1 mA 
+1d20 VMO1: Analog Input 2 mA 
+1d22 VMO1: Analog Input 3 mA 
+1d24 VMO2: Analog Output 1 mA 
+1d26 VMO2: Analog Output 2 mA 
+1d28 VMO2: Analog Output 3 mA 
+1d2a VMO2: Analog Input 1 mA 
+1d2c VMO2: Analog Input 2 mA 
+1d2e VMO2: Analog Input 3 mA 
+1d30 Belt Load Controller kg/m 
+1d32 Loadcell LCT
+1d34 Actual Tare 2
+1d36 Actual Tare LCT
+1d38 Belt Load Unlin. 2
+1d3a Utilization LCT
+1d3c Belt Load Unlin. LCT
+1d3e Delta W2-W1 filtered
+1d40 Delta W2-W1
+1d42 Residual Runtime
+1d44 Tare Error LCT MV
+1d46 Deviation QC/QS -1
+1d48 Loadcell 1 delayed
+1d4a Rotation Speed IDMS 1/min 
+1d4c Rotation Speed Rel. % 
+1d4e Convey Pressure bar 
+1d50 Scale 1
+1d52 Scale 2
+1d54 Delta W2 - W1 QC
+1d56 Tare Error Scale 0
+1d58 Belt Load Tare-Scale
+1d5a Belt Load Scale 1
+1d5c Belt Load Scale 2
+1d62 Amount kg 
+1d64 VVC: Actual Frequency Hz 
+1d66 KME: Fill Weight kg 
+1d68 B + B2: Relative Fill Weight % 
+1d6a Check Measurem. Window B2% 
+1d6c VVC: Actual Amplitude % 
+1d6e VCU2: Cycle Time ms 
+1d70 VCU3: Cycle Time ms 
+1d72 VMO1: Cycle Time ms 
+1d74 VMO2: Cycle Time ms 
+1d76 Cycle Time Measuring ms 
+1d78 VCU2: Response Time ms 
+1d7a VCU3: Response Time ms 
+1d7c VMO1: Response Time ms 
+1d7e VMO2: Response Time ms 
+1d80 VVC: Cycle Time ms 
+1d82 VVC: Response Time ms 
+1d84 VVC: Amplitude Setpoint % 
+1d86 VVC: Control Deviation % 
+1d88 VVC: Current MAX % 
+1d8a VVC: Thermal Load Exciter % 
+1d8c Voltage Max
+1d8e Belt Length m 
+1d90 Load kg 
+1d92 B: virtual Buffer kg
+1d94 Bin Load Adaption %
+1d96 B: Coefficient raw %/mA
+1d98 Controller Mag. Yb delayed mA 
+1d9a Controller Mag. Yb Mean mA 
+1d9c Perc. Controller Magnitude % 
+1d9e B: Calculated Infeed 
+1da8 Total Motor Rotations 
+1db4 VME LC mV/V 
+1db6 VME Temp. °C 
+1db8 VME: Cycle Time ms 
+1dbe Controller Mag. Yb raw mA
+1dc0 P-QA-Setpoint % 
+1dc2 Deviation Belt Load kg/h 
+1dc4 VME: Response Time ms 
+1dc6 Feedrate raw kg/h 
+1dc8 Convey Pressure bar 
+1dcc Feedrate_F kg/h 
+1dce Controller Coefficient kg/h /mA 
+1dd0 Bypass Factor 
+1dd2 Convey Pressure Load kg 
+1dd4 B: Coefficient kg/h /mA 
+1dd6 Controller Mag. YV % 
+1dd8 Controller Mag. YR % 
