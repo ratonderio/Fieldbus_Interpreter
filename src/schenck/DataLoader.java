@@ -17,9 +17,20 @@ public class DataLoader {
       e.printStackTrace();
     }
 
+    Scanner scanner;
+    HashMap<String, String> test = new HashMap<>();
     for (String translation : translate) {
+      scanner = new Scanner(translation);
+      if(scanner.hasNext("[A-fa-f0-9]+")){
+        String intermediate = scanner.next();
+      } else {
+        System.out.println(scanner.next());
+      }
+      test.put(scanner.next(), scanner.nextLine());
       System.out.println(translation);
     }
+
+    System.out.println(test.get("0100"));
 
 
 /*
