@@ -1,4 +1,5 @@
-﻿Command 0
+﻿This is nothing
+Command 0
 0100 Select MDP Set 
 0108 Century 
 Command 1
@@ -203,7 +204,6 @@ Command 14 HI
 01ef F -
 0250 Serial Setpoint kg/h 
 0252 Serial Batch Setpoint kg
-0254 00596
 0256 Batch No. 
 0258 AO: PLC 1 mA 
 025a AO: PLC 2 mA 
@@ -211,20 +211,13 @@ Command 14 HI
 025e Zero Correction Value kg/h 
 0260 Difference Flow Rate kg/h
 0262 BIN: Fill Weight kg
-0264 00612
 0266 BIN: Setpoint kg 
 0268 MDP block source 
 026a MDP block destination 
 026c QA Serial Setpoint kg/m 
-026e 00622
-0270 00624
 0272 Belt Load 2nd Bridge kg/m 
 0274 Weight on 1st LC kg/m 
 0276 Weight on 2nd LC kg/m 
-0278 00632
-027a 00634
-027c 00636
-027e 00638
 Status 0
 02d0 Feeder Type 
 02d8 SW Revision 
@@ -935,8 +928,7 @@ Status 40 HI
 055f F - Event: LC Input > MAX 2nd Bin CA16
 Status 41 LO
 0560 0 - Event: LC Input > MAX HI01
-0561 1 - Event: Actual Flow Rate MAX
-HI02
+0561 1 - Event: Actual Flow Rate MAX HI02
 0562 2 - Event: Load MAX HI03
 0563 3 Event: Speed MAX HI04 
 0564 4 - Event: Deviation HI05

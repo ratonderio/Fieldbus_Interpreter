@@ -4,40 +4,50 @@ import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.*;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
+import org.jetbrains.annotations.NotNull;
 
 public class DataLoader {
+
   DataLoader() {
     List<String> translate = Collections.emptyList();
     List<String> lines = Collections.emptyList();
-    try{
-      translate = Files.readAllLines(Path.of("C:\\Users\\J.Purdon\\Documents\\Documents\\Engineering\\PROGRAMMING\\DATA\\translate.txt"));
-      lines = Files.readAllLines(Path.of("C:\\Users\\J.Purdon\\Desktop\\fieldbus test.txt"), StandardCharsets.UTF_8);
+    try {
+      translate = Files
+          .readAllLines(Path.of("src/resources/translate.txt"), StandardCharsets.UTF_8);
+      //lines = Files.readAllLines(Path.of("src/resources/translate.txt"), StandardCharsets.UTF_8);
     } catch (IOException e) {
       e.printStackTrace();
     }
-
-    Scanner scanner;
+    String hexCode, rest, temp;
     HashMap<String, String> test = new HashMap<>();
     for (String translation : translate) {
-      scanner = new Scanner(translation);
-      if(scanner.hasNext("[A-fa-f0-9]+")){
-        String intermediate = scanner.next();
+      hexCode = translation.substring(0, 4);
+      rest = translation.substring(4).strip();
+      if (hexCode.matches("\\d[a-f0-9]{3}")) {
+        test.put(hexCode, rest);
       } else {
-        System.out.println(scanner.next());
+        System.out.println(hexCode + rest);
       }
-      test.put(scanner.next(), scanner.nextLine());
-      System.out.println(translation);
     }
+    System.out.println(toLittleEndian("8666B740"));
 
-    System.out.println(test.get("0100"));
-
-
-/*
-    SchenckDateTime currentTime = new SchenckDateTime(test2[0] + " " + test2[1] + " " + test2[2], test2[5] + test2[6]);
-    System.out.println(currentTime.currentTime + currentTime.currentMillis);
-
-    FBInput fbInput = new FBInput();
-    System.out.println(fbInput.fieldbusInputs.get(test2[7]));*/
   }
+
+  public static @NotNull
+  Float toLittleEndian(final String hex) {
+    long ret;
+    String hexLittleEndian = "";
+    if (hex.length() % 2 != 0) {
+      return 0f;
+    }
+    for (int i = hex.length() - 2; i >= 0; i -= 2) {
+      hexLittleEndian += hex.substring(i, i + 2);
+    }
+    ret = Long.parseLong(hexLittleEndian, 16);
+    return Float.intBitsToFloat((int) ret);
+  }
+
 }
