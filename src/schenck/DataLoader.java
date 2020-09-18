@@ -1,6 +1,7 @@
 package schenck;
 
 import java.io.IOException;
+import java.math.BigInteger;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -12,10 +13,10 @@ import org.jetbrains.annotations.NotNull;
 public class DataLoader {
 
   DataLoader() {
-    List<String> translate = Collections.emptyList();
+    List<String> translationTable = Collections.emptyList();
     List<String> lines = Collections.emptyList();
     try {
-      translate = Files
+      translationTable = Files
           .readAllLines(Path.of("src/resources/translate.txt"), StandardCharsets.UTF_8);
       //lines = Files.readAllLines(Path.of("src/resources/translate.txt"), StandardCharsets.UTF_8);
     } catch (IOException e) {
@@ -23,31 +24,34 @@ public class DataLoader {
     }
     String hexCode, rest, temp;
     HashMap<String, String> test = new HashMap<>();
-    for (String translation : translate) {
+    for (String translation : translationTable) {
       hexCode = translation.substring(0, 4);
       rest = translation.substring(4).strip();
-      if (hexCode.matches("\\d[a-f0-9]{3}")) {
+      if (hexCode.matches("\\d[a-fA-F0-9]{3}")) {
         test.put(hexCode, rest);
-      } else {
+      } else if (hexCode.matches("[CS][ot][ma].*")) {
         System.out.println(hexCode + rest);
+      } else {
+        System.out.println("Nothing");
       }
     }
     System.out.println(toLittleEndian("8666B740"));
-
   }
 
-  public static @NotNull
-  Float toLittleEndian(final String hex) {
-    long ret;
-    String hexLittleEndian = "";
+  public @NotNull
+  Number toLittleEndian(final String hex) {
+    boolean test = false;
+    StringBuilder hexLittleEndian = new StringBuilder();
     if (hex.length() % 2 != 0) {
       return 0f;
     }
     for (int i = hex.length() - 2; i >= 0; i -= 2) {
-      hexLittleEndian += hex.substring(i, i + 2);
+      hexLittleEndian.append(hex, i, i + 2);
     }
-    ret = Long.parseLong(hexLittleEndian, 16);
-    return Float.intBitsToFloat((int) ret);
+    if (test) {
+      return Float.intBitsToFloat((int) Long.parseLong(hexLittleEndian.toString(), 16));
+    } else {
+      return new BigInteger(hexLittleEndian.toString(), 16);
+    }
   }
-
 }

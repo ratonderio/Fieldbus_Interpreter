@@ -5,32 +5,32 @@ import java.awt.GridBagLayout;
 import java.io.File;
 import java.io.IOException;
 import java.util.Arrays;
-import java.util.Objects;
 import java.util.Scanner;
+import javax.swing.JButton;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.TitledBorder;
 import javax.swing.filechooser.FileNameExtensionFilter;
-import javax.swing.tree.DefaultMutableTreeNode;
 
 class GUI extends JFrame {
-  private JPanel mainPanel = new JPanel(new GridBagLayout());
-
 
 
   GUI(){
     setTitle("Fieldbus Interpreter");
     setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     setLocationByPlatform(true);
-    setMinimumSize(new Dimension(600,800));
+    setMinimumSize(new Dimension(800,600));
     setResizable(true);
 
-    mainPanel.setBorder(new TitledBorder("Poop"));
+    JPanel mainPanel = new JPanel(new GridBagLayout());
+    JButton selectFile = new JButton("Select File");
+    selectFile.addActionListener(EventListener -> chooseFile());
+    mainPanel.setBorder(new TitledBorder("FB INTER"));
+    mainPanel.add(selectFile);
     add(mainPanel);
     setVisible(true);
-
   }
 
   private void chooseFile() {
