@@ -17,11 +17,11 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 class GUI extends JFrame {
 
 
-  GUI(){
+  GUI() {
     setTitle("Fieldbus Interpreter");
     setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     setLocationByPlatform(true);
-    setMinimumSize(new Dimension(800,600));
+    setMinimumSize(new Dimension(800, 600));
     setResizable(true);
 
     JPanel mainPanel = new JPanel(new GridBagLayout());
@@ -45,17 +45,18 @@ class GUI extends JFrame {
       Scanner scanner = new Scanner(file);
       scanner.useDelimiter(" ");
 
-
       scanner.close();
       this.repaint();
       this.revalidate();
     } catch (IOException ex) {
       JOptionPane
-          .showMessageDialog(this, "No file was selected or the selected file was not found.", "No File Selected", JOptionPane.INFORMATION_MESSAGE);
+          .showMessageDialog(this, "No file was selected or the selected file was not found.",
+              "No File Selected", JOptionPane.INFORMATION_MESSAGE);
       chooseFile();
     } catch (NullPointerException ex) {
       System.out.println(Arrays.toString(ex.getStackTrace()));
-      JOptionPane.showMessageDialog(this, "Database selection cancelled.", "Cancel", JOptionPane.INFORMATION_MESSAGE);
+      JOptionPane.showMessageDialog(this, "Database selection cancelled.", "Cancel",
+          JOptionPane.INFORMATION_MESSAGE);
     }
 
   }

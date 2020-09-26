@@ -12,6 +12,7 @@ import org.jetbrains.annotations.NotNull;
 
 public class DataLoader {
 
+  //TODO Need Map for SchenckDataType for final translation; not sure if here or own class
   DataLoader() {
     List<String> translationTable = Collections.emptyList();
     List<String> lines = Collections.emptyList();
@@ -38,6 +39,8 @@ public class DataLoader {
     System.out.println(toLittleEndian("8666B740"));
   }
 
+
+  // TODO Return String of Little Endian, move decode logic to data type
   public @NotNull
   Number toLittleEndian(final String hex) {
     boolean test = false;
