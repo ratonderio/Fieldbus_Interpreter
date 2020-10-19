@@ -3,7 +3,6 @@ package schenck;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.TemporalAccessor;
 
-
 //TODO Decide if actually useful for GUI
 public class SchenckDateTime {
 

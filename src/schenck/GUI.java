@@ -14,8 +14,8 @@ import javax.swing.JPanel;
 import javax.swing.border.TitledBorder;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
+//TODO Make an actual GUI
 class GUI extends JFrame {
-
 
   GUI() {
     setTitle("Fieldbus Interpreter");
