@@ -4,12 +4,12 @@ import java.util.HashMap;
 import java.util.List;
 
 //TODO Liberal with the getters to begin with;remove extraneous when done
-class BitEncoded implements SchenckDataType {
+public class BitEncoded implements SchenckDataType {
 
-  private final String name;
+  private String name;
   private String value;
-  private final List<String> bitEncodedList;
-  private final HashMap<String, String> internalBitNames = new HashMap<>();
+  private List<String> bitEncodedList;
+  private HashMap<String, String> internalBitNames = new HashMap<>();
 
   BitEncoded(String name, List<String> bitEncodedList) {
     this.name = name;
@@ -31,7 +31,8 @@ class BitEncoded implements SchenckDataType {
   public String toString() {
     return "BitEncoded{" +
         "name='" + name + '\'' +
-        ", bitEncodedList=" + bitEncodedList +
+        ", value='" + value + '\'' +
+        ", internalBitNames=" + internalBitNames +
         '}';
   }
 

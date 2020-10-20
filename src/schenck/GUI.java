@@ -18,18 +18,25 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 class GUI extends JFrame {
 
   GUI() {
-    setTitle("Fieldbus Interpreter");
-    setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    setLocationByPlatform(true);
-    setMinimumSize(new Dimension(800, 600));
-    setResizable(true);
+
+    {
+      setTitle("Fieldbus Interpreter");
+      setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+      setLocationByPlatform(true);
+      setSize(new Dimension(1280, 720));
+      setMinimumSize(new Dimension(800, 600));
+      setResizable(true);
+    }
 
     JPanel mainPanel = new JPanel(new GridBagLayout());
+    mainPanel.setBorder(new TitledBorder("FB INTER"));
+
     JButton selectFile = new JButton("Select File");
     selectFile.addActionListener(EventListener -> chooseFile());
-    mainPanel.setBorder(new TitledBorder("FB INTER"));
+
     mainPanel.add(selectFile);
     add(mainPanel);
+
     setVisible(true);
   }
 

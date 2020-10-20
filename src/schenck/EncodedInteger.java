@@ -6,10 +6,10 @@ import java.util.List;
 //TODO Liberal with the getters to begin with;remove extraneous when done
 public class EncodedInteger implements SchenckDataType {
 
-  private final String name;
+  private String name;
   private String value;
-  private final List<String> encodedIntegerList;
-  private final HashMap<String, String> internalIntegerNames = new HashMap<>();
+  private List<String> encodedIntegerList;
+  private HashMap<String, String> internalIntegerNames = new HashMap<>();
 
   EncodedInteger(String name, List<String> encodedIntegerList) {
     this.name = name;
@@ -31,7 +31,8 @@ public class EncodedInteger implements SchenckDataType {
   public String toString() {
     return "EncodedInteger{" +
         "name='" + name + '\'' +
-        ", encodedIntegerList=" + encodedIntegerList +
+        ", value='" + value + '\'' +
+        ", internalIntegerNames=" + internalIntegerNames +
         '}';
   }
 

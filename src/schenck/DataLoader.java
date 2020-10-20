@@ -14,6 +14,8 @@ import org.jetbrains.annotations.NotNull;
 
 public class DataLoader {
 
+  HashMap<String, SchenckDataType> schenckDataTypeHashMap = new HashMap<>();
+
   //TODO HashMap created - determine if passed elsewhere (is dataloader even a good name at this point??)
   DataLoader() {
     List<String> translationTable = Collections.emptyList();
@@ -28,7 +30,6 @@ public class DataLoader {
 
     String temp, currentName = null, prevName;
     List<String> test = new ArrayList<>();
-    HashMap<String, SchenckDataType> schenckDataTypeHashMap = new HashMap<>();
 
     while (iterator.hasNext()) {
       temp = iterator.next();
@@ -37,21 +38,21 @@ public class DataLoader {
         test.add(temp);
         if (!iterator.hasNext()) {
           BitEncoded finalBitEncoded = new BitEncoded(currentName, test);
-          schenckDataTypeHashMap.put(finalBitEncoded.getName(), finalBitEncoded);
+          schenckDataTypeHashMap.put(finalBitEncoded.getValue(), finalBitEncoded);
         }
       } else if (temp.substring(0, 4).matches("[CS][ot][ma].*")) {
         prevName = currentName;
         currentName = temp;
         if (test.size() <= 2) {
           EncodedInteger encodedInteger = new EncodedInteger(prevName, test);
-          schenckDataTypeHashMap.put(encodedInteger.getName(), encodedInteger);
+          schenckDataTypeHashMap.put(encodedInteger.getValue(), encodedInteger);
         } else if (test.size() == 8) {
           BitEncoded bitEncoded = new BitEncoded(prevName, test);
-          schenckDataTypeHashMap.put(bitEncoded.getName(), bitEncoded);
+          schenckDataTypeHashMap.put(bitEncoded.getValue(), bitEncoded);
         } else {
           for (String floats : test) {
             IEEE754 ieee754 = new IEEE754(floats);
-            schenckDataTypeHashMap.put(ieee754.getName(), ieee754);
+            schenckDataTypeHashMap.put(ieee754.getValue(), ieee754);
           }
         }
         test.clear();
@@ -59,7 +60,7 @@ public class DataLoader {
         System.out.println("Nothing");
       }
     }
-    System.out.println(schenckDataTypeHashMap.entrySet());
+    //System.out.println(schenckDataTypeHashMap.entrySet());
     //System.out.println(toLittleEndian("8666B740"));
   }
 
