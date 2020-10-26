@@ -1,21 +1,37 @@
 package schenck;
 
+import java.awt.Container;
 import java.awt.Dimension;
+import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.Insets;
 import java.io.File;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.Scanner;
+import javax.swing.DefaultListModel;
 import javax.swing.JButton;
+import javax.swing.JComponent;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
+import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JSplitPane;
+import javax.swing.ListSelectionModel;
 import javax.swing.border.TitledBorder;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
 //TODO Make an actual GUI
 class GUI extends JFrame {
+
+  JPanel optionsPanel = new JPanel(new GridBagLayout()), dataPanel = new JPanel(
+      new GridBagLayout()), testPanel = new TestPanel();
+  JSplitPane splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, optionsPanel, dataPanel);
+  JButton selectFile = new JButton("Select File");
+  JList list;
+  DefaultListModel listModel;
 
   GUI() {
 
@@ -28,14 +44,32 @@ class GUI extends JFrame {
       setResizable(true);
     }
 
-    JPanel mainPanel = new JPanel(new GridBagLayout());
-    mainPanel.setBorder(new TitledBorder("FB INTER"));
+    optionsPanel.setBorder(new TitledBorder("FBFB"));
 
-    JButton selectFile = new JButton("Select File");
     selectFile.addActionListener(EventListener -> chooseFile());
 
-    mainPanel.add(selectFile);
-    add(mainPanel);
+    listModel = new DefaultListModel();
+    listModel.addElement("Jane Doe");
+    listModel.addElement("John Smith");
+    listModel.addElement("Kathy Green");
+    listModel.addElement("Test");
+    listModel.addElement("Test");
+    listModel.addElement("Test");
+    listModel.addElement("Test");
+
+    list = new JList(listModel);
+    list.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+    list.setSelectedIndex(0);
+    list.setVisibleRowCount(20);
+    JScrollPane listScrollPane = new JScrollPane(list);
+
+    addItem(dataPanel, testPanel, 0, 0, 1, 1, GridBagConstraints.CENTER, GridBagConstraints.BOTH);
+    addItem(optionsPanel, selectFile, 0, 0, 1, 1, GridBagConstraints.CENTER,
+        GridBagConstraints.HORIZONTAL);
+    addItem(optionsPanel, listScrollPane, 0, 1, 1, 1, GridBagConstraints.CENTER,
+        GridBagConstraints.BOTH);
+
+    add(splitPane);
 
     setVisible(true);
   }
@@ -66,6 +100,22 @@ class GUI extends JFrame {
           JOptionPane.INFORMATION_MESSAGE);
     }
 
+  }
+
+  public static void addItem(Container mainPanel, JComponent component, int gridx, int gridy,
+      int width,
+      int height, int align, int fill) {
+    GridBagConstraints constraints = new GridBagConstraints();
+    constraints.gridx = gridx;
+    constraints.gridy = gridy;
+    constraints.gridwidth = width;
+    constraints.gridheight = height;
+    constraints.weightx = 100.0;
+    constraints.weighty = 100.0;
+    constraints.insets = new Insets(5, 5, 5, 5);
+    constraints.anchor = align;
+    constraints.fill = fill;
+    mainPanel.add(component, constraints);
   }
 
 }
