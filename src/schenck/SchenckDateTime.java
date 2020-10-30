@@ -3,7 +3,7 @@ package schenck;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.TemporalAccessor;
 
-//TODO Decide if actually useful for GUI
+//TODO Decide if actually useful for GUI; might be useful for labels
 public class SchenckDateTime {
 
   TemporalAccessor currentTime;

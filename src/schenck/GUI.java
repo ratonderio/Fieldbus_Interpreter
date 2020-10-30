@@ -7,7 +7,6 @@ import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.io.File;
 import java.io.IOException;
-import java.util.Arrays;
 import java.util.Scanner;
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
@@ -23,11 +22,12 @@ import javax.swing.ListSelectionModel;
 import javax.swing.border.TitledBorder;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
-//TODO Make an actual GUI
+//TODO Clean up GUI
 class GUI extends JFrame {
 
+  DataLoader dataLoader = new DataLoader();
   JPanel optionsPanel = new JPanel(new GridBagLayout()), dataPanel = new JPanel(
-      new GridBagLayout()), testPanel = new TestPanel();
+      new GridBagLayout()), testPanel = new DataPanel(dataLoader.getSchenckDataTypeHashMap());
   JSplitPane splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, optionsPanel, dataPanel);
   JButton selectFile = new JButton("Select File");
   JList list;
@@ -63,6 +63,11 @@ class GUI extends JFrame {
     list.setVisibleRowCount(20);
     JScrollPane listScrollPane = new JScrollPane(list);
 
+/*    JButton vis = new JButton("Vis");
+    vis.addActionListener(e -> {
+      JOptionPane.showMessageDialog(this, "Yep", "This", JOptionPane.INFORMATION_MESSAGE);
+    });*/
+
     addItem(dataPanel, testPanel, 0, 0, 1, 1, GridBagConstraints.CENTER, GridBagConstraints.BOTH);
     addItem(optionsPanel, selectFile, 0, 0, 1, 1, GridBagConstraints.CENTER,
         GridBagConstraints.HORIZONTAL);
@@ -93,9 +98,7 @@ class GUI extends JFrame {
       JOptionPane
           .showMessageDialog(this, "No file was selected or the selected file was not found.",
               "No File Selected", JOptionPane.INFORMATION_MESSAGE);
-      chooseFile();
     } catch (NullPointerException ex) {
-      System.out.println(Arrays.toString(ex.getStackTrace()));
       JOptionPane.showMessageDialog(this, "Database selection cancelled.", "Cancel",
           JOptionPane.INFORMATION_MESSAGE);
     }

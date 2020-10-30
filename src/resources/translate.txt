@@ -38,6 +38,7 @@
 6560 0 - Event: Deviation Pre-Warning HI17
 6561 1 - Event: Convey Pressure MAX HI18
 6571 1 -Event: Convey Pressure MIN LO18
+0750 Feedrate kg/h
 0752 Totalizer 1 kg
 0754 Totalizer 2 kg
 0756 Totalizer 3 kg

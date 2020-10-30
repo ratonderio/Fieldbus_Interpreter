@@ -64,6 +64,9 @@ public class DataLoader {
     //System.out.println(toLittleEndian("8666B740"));
   }
 
+  public HashMap<String, SchenckDataType> getSchenckDataTypeHashMap() {
+    return schenckDataTypeHashMap;
+  }
 
   // TODO This is floating here for a bit until it finds a final home
   public @NotNull
