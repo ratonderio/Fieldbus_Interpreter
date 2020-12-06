@@ -1,19 +1,21 @@
 package schenck;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import javax.swing.JPanel;
 
 //TODO Liberal with the getters to begin with;remove extraneous when done
 public class BitEncoded implements SchenckDataType {
 
   private String name;
   private String value;
-  private List<String> bitEncodedList;
   private HashMap<String, String> internalBitNames = new HashMap<>();
+  private JPanel valuePanel;
+  private ArrayList<BitEncoded> byteList = new ArrayList<>();
 
   BitEncoded(String name, List<String> bitEncodedList) {
     this.name = name;
-    this.bitEncodedList = bitEncodedList;
     int first = 0;
     String hexCode, rest;
     for (String bitVals : bitEncodedList) {
@@ -44,11 +46,26 @@ public class BitEncoded implements SchenckDataType {
     return value;
   }
 
-  public List<String> getBitEncodedList() {
-    return bitEncodedList;
+  public JPanel getValuePanel() {
+    return valuePanel;
+  }
+
+  public void setValuePanel(JPanel valuePanel) {
+    this.valuePanel = valuePanel;
+  }
+
+  public ArrayList<BitEncoded> getByteList() {
+    return byteList;
+  }
+
+  @Override
+  public void setValue(String value) {
+    this.value = value;
   }
 
   public HashMap<String, String> getInternalBitNames() {
     return internalBitNames;
   }
+
+
 }

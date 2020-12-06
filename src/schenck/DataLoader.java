@@ -1,7 +1,6 @@
 package schenck;
 
 import java.io.IOException;
-import java.math.BigInteger;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -10,11 +9,10 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
-import org.jetbrains.annotations.NotNull;
 
 public class DataLoader {
 
-  HashMap<String, SchenckDataType> schenckDataTypeHashMap = new HashMap<>();
+  private HashMap<String, SchenckDataType> schenckDataTypeHashMap = new HashMap<>();
 
   //TODO HashMap created - determine if passed elsewhere (is dataloader even a good name at this point??)
   DataLoader() {
@@ -31,6 +29,10 @@ public class DataLoader {
     String temp, currentName = null, prevName;
     List<String> test = new ArrayList<>();
 
+    BitEncoded bitEncodedTopLevel = null;
+    EncodedInteger intEncodedTopLevel = null;
+    int bitEncodedByte = 0, intEncodedByte = 0;
+
     while (iterator.hasNext()) {
       temp = iterator.next();
 
@@ -38,6 +40,9 @@ public class DataLoader {
         test.add(temp);
         if (!iterator.hasNext()) {
           BitEncoded finalBitEncoded = new BitEncoded(currentName, test);
+          assert bitEncodedTopLevel != null;
+          bitEncodedTopLevel.getByteList().add(finalBitEncoded);
+          schenckDataTypeHashMap.put(bitEncodedTopLevel.getValue(), bitEncodedTopLevel);
           schenckDataTypeHashMap.put(finalBitEncoded.getValue(), finalBitEncoded);
         }
       } else if (temp.substring(0, 4).matches("[CS][ot][ma].*")) {
@@ -45,9 +50,37 @@ public class DataLoader {
         currentName = temp;
         if (test.size() <= 2) {
           EncodedInteger encodedInteger = new EncodedInteger(prevName, test);
-          schenckDataTypeHashMap.put(encodedInteger.getValue(), encodedInteger);
+          switch (intEncodedByte) {
+            case 0:
+              intEncodedTopLevel = encodedInteger;
+              intEncodedByte++;
+              break;
+            case 1:
+              intEncodedTopLevel.getByteList().add(encodedInteger);
+              schenckDataTypeHashMap.put(encodedInteger.getValue(), encodedInteger);
+              schenckDataTypeHashMap.put(intEncodedTopLevel.getValue(), intEncodedTopLevel);
+              intEncodedByte = 0;
+              break;
+            default:
+              break;
+          }
         } else if (test.size() == 8) {
           BitEncoded bitEncoded = new BitEncoded(prevName, test);
+
+          if (bitEncodedByte == 0) {
+            bitEncodedTopLevel = bitEncoded;
+            bitEncodedByte++;
+            test.clear();
+            continue;
+          } else if (bitEncodedByte < 3 && bitEncodedByte > 0) {
+            bitEncodedTopLevel.getByteList().add(bitEncoded);
+            bitEncodedByte++;
+          } else if (bitEncodedByte == 3) {
+            bitEncodedTopLevel.getByteList().add(bitEncoded);
+            bitEncodedByte = 0;
+            schenckDataTypeHashMap.put(bitEncodedTopLevel.getValue(), bitEncodedTopLevel);
+          }
+
           schenckDataTypeHashMap.put(bitEncoded.getValue(), bitEncoded);
         } else {
           for (String floats : test) {
@@ -56,33 +89,14 @@ public class DataLoader {
           }
         }
         test.clear();
-      } else {
-        System.out.println("Nothing");
       }
     }
+    schenckDataTypeHashMap.put("----", new IEEE754("---- Not Used"));
     //System.out.println(schenckDataTypeHashMap.entrySet());
     //System.out.println(toLittleEndian("8666B740"));
   }
 
   public HashMap<String, SchenckDataType> getSchenckDataTypeHashMap() {
     return schenckDataTypeHashMap;
-  }
-
-  // TODO This is floating here for a bit until it finds a final home
-  public @NotNull
-  Number toLittleEndian(final String hex) {
-    boolean test = false;
-    StringBuilder hexLittleEndian = new StringBuilder();
-    if (hex.length() % 2 != 0) {
-      return 0f;
-    }
-    for (int i = hex.length() - 2; i >= 0; i -= 2) {
-      hexLittleEndian.append(hex, i, i + 2);
-    }
-    if (test) {
-      return Float.intBitsToFloat((int) Long.parseLong(hexLittleEndian.toString(), 16));
-    } else {
-      return new BigInteger(hexLittleEndian.toString(), 16);
-    }
   }
 }

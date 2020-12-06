@@ -7,6 +7,7 @@ import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Scanner;
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
@@ -20,18 +21,19 @@ import javax.swing.JScrollPane;
 import javax.swing.JSplitPane;
 import javax.swing.ListSelectionModel;
 import javax.swing.border.TitledBorder;
+import javax.swing.event.ListSelectionEvent;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
 //TODO Clean up GUI
 class GUI extends JFrame {
 
   DataLoader dataLoader = new DataLoader();
-  JPanel optionsPanel = new JPanel(new GridBagLayout()), dataPanel = new JPanel(
-      new GridBagLayout()), testPanel = new DataPanel(dataLoader.getSchenckDataTypeHashMap());
-  JSplitPane splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, optionsPanel, dataPanel);
+  JPanel optionsPanel = new JPanel(new GridBagLayout()), dataDisplayPanel = new JPanel(
+      new GridBagLayout());
+  JSplitPane splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, optionsPanel, dataDisplayPanel);
   JButton selectFile = new JButton("Select File");
-  JList list;
-  DefaultListModel listModel;
+  JList<FieldbusObject> list;
+  DefaultListModel<FieldbusObject> listModel = new DefaultListModel<>();
 
   GUI() {
 
@@ -48,27 +50,15 @@ class GUI extends JFrame {
 
     selectFile.addActionListener(EventListener -> chooseFile());
 
-    listModel = new DefaultListModel();
-    listModel.addElement("Jane Doe");
-    listModel.addElement("John Smith");
-    listModel.addElement("Kathy Green");
-    listModel.addElement("Test");
-    listModel.addElement("Test");
-    listModel.addElement("Test");
-    listModel.addElement("Test");
-
-    list = new JList(listModel);
+    list = new JList<>(listModel);
+    list.setCellRenderer(new SchenckListCellRenderer());
     list.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
     list.setSelectedIndex(0);
     list.setVisibleRowCount(20);
+    list.addListSelectionListener(this::updateDataPanel);
+
     JScrollPane listScrollPane = new JScrollPane(list);
 
-/*    JButton vis = new JButton("Vis");
-    vis.addActionListener(e -> {
-      JOptionPane.showMessageDialog(this, "Yep", "This", JOptionPane.INFORMATION_MESSAGE);
-    });*/
-
-    addItem(dataPanel, testPanel, 0, 0, 1, 1, GridBagConstraints.CENTER, GridBagConstraints.BOTH);
     addItem(optionsPanel, selectFile, 0, 0, 1, 1, GridBagConstraints.CENTER,
         GridBagConstraints.HORIZONTAL);
     addItem(optionsPanel, listScrollPane, 0, 1, 1, 1, GridBagConstraints.CENTER,
@@ -87,13 +77,30 @@ class GUI extends JFrame {
 
     try {
       File file = fileChooser.getSelectedFile();
-      String fileName = fileChooser.getName(file);
-      Scanner scanner = new Scanner(file);
-      scanner.useDelimiter(" ");
 
+      Scanner scanner = new Scanner(file);
+      ArrayList<FieldbusObject> fieldbusObjects = new ArrayList<>();
+      while (scanner.hasNextLine()) {
+        String scanline = scanner.nextLine();
+        if (scanline.contains("{")) {
+          FieldbusInput input = new FieldbusInput(scanline, dataLoader);
+          FieldbusDataPanel fieldbusDataPanel = new FieldbusDataPanel(input.getFieldbusData());
+          input.setDataPanel(fieldbusDataPanel);
+          fieldbusObjects.add(input);
+        } else if (scanline.contains("}")) {
+          FieldbusOutput output = new FieldbusOutput(scanline, dataLoader);
+          FieldbusDataPanel fieldbusDataPanel = new FieldbusDataPanel(output.getFieldbusData());
+          output.setDataPanel(fieldbusDataPanel);
+          fieldbusObjects.add(output);
+        }
+      }
       scanner.close();
-      this.repaint();
-      this.revalidate();
+
+      listModel.clear();
+      listModel.addAll(fieldbusObjects);
+
+//      this.repaint();
+//      this.revalidate();
     } catch (IOException ex) {
       JOptionPane
           .showMessageDialog(this, "No file was selected or the selected file was not found.",
@@ -104,6 +111,7 @@ class GUI extends JFrame {
     }
 
   }
+
 
   public static void addItem(Container mainPanel, JComponent component, int gridx, int gridy,
       int width,
@@ -120,5 +128,19 @@ class GUI extends JFrame {
     constraints.fill = fill;
     mainPanel.add(component, constraints);
   }
+
+
+  void updateDataPanel(ListSelectionEvent e){
+    if(!e.getValueIsAdjusting()){
+      dataDisplayPanel.removeAll();
+      FieldbusObject fieldbusObject = list.getSelectedValue();
+      addItem(dataDisplayPanel, fieldbusObject.getDataPanel(),0,0,1,1,GridBagConstraints.CENTER,GridBagConstraints.BOTH);
+      this.repaint();
+      this.revalidate();
+      //JOptionPane.showMessageDialog(this,new DataTypeValuePanel());
+      //System.out.println(list.getSelectedValue());
+    }
+  }
+
 
 }

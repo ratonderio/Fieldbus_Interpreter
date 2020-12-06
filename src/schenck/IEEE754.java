@@ -1,10 +1,13 @@
 package schenck;
 
+import javax.swing.JPanel;
+
 //TODO Liberal with the getters to begin with;remove extraneous when done
 public class IEEE754 implements SchenckDataType {
 
-  private final String name;
-  private final String value;
+  private String name;
+  private String value;
+  private JPanel valuePanel;
 
   IEEE754(String collatedName) {
     value = collatedName.substring(0, 4);
@@ -25,5 +28,18 @@ public class IEEE754 implements SchenckDataType {
 
   public String getValue() {
     return value;
+  }
+
+  public JPanel getValuePanel() {
+    return valuePanel;
+  }
+
+  public void setValuePanel(JPanel valuePanel) {
+    this.valuePanel = valuePanel;
+  }
+
+  @Override
+  public void setValue(String value) {
+    this.value = value;
   }
 }
