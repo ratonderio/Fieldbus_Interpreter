@@ -2,7 +2,6 @@ package schenck;
 
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
-import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.Collections;
 import javax.swing.JLabel;
@@ -15,8 +14,8 @@ public class DataTypeValuePanel extends JPanel {
     setLayout(new GridBagLayout());
     setBorder(new TitledBorder(schenckDataType.getName()));
     if (schenckDataType.getClass() == IEEE754.class) {
-      Number IEEE754Value = DataHelper.toLittleEndian(schenckDataType);
-      GUI.addItem(this, new JLabel(IEEE754Value.toString()), 0, 0, 1, 1,
+      String IEEE754Value = DataHelper.toLittleEndian(schenckDataType);
+      GUI.addItem(this, new JLabel(IEEE754Value), 0, 0, 1, 1,
           GridBagConstraints.CENTER, GridBagConstraints.BOTH);
     } else if (schenckDataType.getClass() == EncodedInteger.class) {
       EncodedInteger encodedInteger = (EncodedInteger) schenckDataType;
@@ -25,9 +24,15 @@ public class DataTypeValuePanel extends JPanel {
           encodedInteger.getInternalIntegerNames().values());
       intNamesList.addAll(encodedInteger.getByteList().get(0).getInternalIntegerNames().values());
 
+      String encodedIntegerValue = schenckDataType.getValue();
+      String[] encodedIntegerSplit = encodedIntegerValue.split("(?<=\\G.{2})");
+
       int i = 0;
       for (String integerName : intNamesList) {
         GUI.addItem(this, new JLabel(integerName), 0, i, 1, 1,
+            GridBagConstraints.CENTER, GridBagConstraints.BOTH);
+        GUI.addItem(this, new JLabel(String.valueOf(Integer.parseInt(encodedIntegerSplit[i], 16))),
+            1, i, 1, 1,
             GridBagConstraints.CENTER, GridBagConstraints.BOTH);
         i++;
       }
@@ -45,25 +50,23 @@ public class DataTypeValuePanel extends JPanel {
       Collections.sort(firstBitNamesList);
       Collections.sort(secondBitNamesList);
 
-      BigInteger bitEncodedValue = (BigInteger) DataHelper.toLittleEndian(bitEncoded);
-      System.out.println(bitEncodedValue.toString(2));
-      //String[] bitEncodedValueSplit = bitEncodedValue.split(bitEncodedValue);
-      //System.out.println(Arrays.toString(bitEncodedValueSplit));
+      String bitEncodedValue = DataHelper.toLittleEndian(bitEncoded);
+      String[] bitEncodedArray = bitEncodedValue.split("");
 
       int i = 0;
       for (String bitName : firstBitNamesList) {
         GUI.addItem(this, new JLabel(bitName), 0, i, 1, 1,
             GridBagConstraints.CENTER, GridBagConstraints.BOTH);
-//        GUI.addItem(this, new JLabel(bitEncodedValueSplit[i]), 1, i, 1, 1,
-//            GridBagConstraints.CENTER, GridBagConstraints.BOTH);
+        GUI.addItem(this, new JLabel(bitEncodedArray[i]), 1, i, 1, 1,
+            GridBagConstraints.CENTER, GridBagConstraints.BOTH);
         i++;
       }
 
       for (String bitName : secondBitNamesList) {
         GUI.addItem(this, new JLabel(bitName), 0, i, 1, 1,
             GridBagConstraints.CENTER, GridBagConstraints.BOTH);
-//        GUI.addItem(this, new JLabel(bitEncodedValueSplit[i]), 1, i, 1, 1,
-//            GridBagConstraints.CENTER, GridBagConstraints.BOTH);
+        GUI.addItem(this, new JLabel(bitEncodedArray[i]), 1, i, 1, 1,
+            GridBagConstraints.CENTER, GridBagConstraints.BOTH);
         i++;
       }
     }

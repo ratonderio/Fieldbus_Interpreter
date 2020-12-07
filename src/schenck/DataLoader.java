@@ -14,7 +14,6 @@ public class DataLoader {
 
   private HashMap<String, SchenckDataType> schenckDataTypeHashMap = new HashMap<>();
 
-  //TODO HashMap created - determine if passed elsewhere (is dataloader even a good name at this point??)
   DataLoader() {
     List<String> translationTable = Collections.emptyList();
     try {
@@ -27,7 +26,7 @@ public class DataLoader {
     Iterator<String> iterator = translationTable.iterator();
 
     String temp, currentName = null, prevName;
-    List<String> test = new ArrayList<>();
+    List<String> tempList = new ArrayList<>();
 
     BitEncoded bitEncodedTopLevel = null;
     EncodedInteger intEncodedTopLevel = null;
@@ -37,9 +36,9 @@ public class DataLoader {
       temp = iterator.next();
 
       if (temp.substring(0, 4).matches("\\d[a-fA-F0-9]{3}")) {
-        test.add(temp);
+        tempList.add(temp);
         if (!iterator.hasNext()) {
-          BitEncoded finalBitEncoded = new BitEncoded(currentName, test);
+          BitEncoded finalBitEncoded = new BitEncoded(currentName, tempList);
           assert bitEncodedTopLevel != null;
           bitEncodedTopLevel.getByteList().add(finalBitEncoded);
           schenckDataTypeHashMap.put(bitEncodedTopLevel.getValue(), bitEncodedTopLevel);
@@ -48,8 +47,8 @@ public class DataLoader {
       } else if (temp.substring(0, 4).matches("[CS][ot][ma].*")) {
         prevName = currentName;
         currentName = temp;
-        if (test.size() <= 2) {
-          EncodedInteger encodedInteger = new EncodedInteger(prevName, test);
+        if (tempList.size() <= 2) {
+          EncodedInteger encodedInteger = new EncodedInteger(prevName, tempList);
           switch (intEncodedByte) {
             case 0:
               intEncodedTopLevel = encodedInteger;
@@ -64,13 +63,13 @@ public class DataLoader {
             default:
               break;
           }
-        } else if (test.size() == 8) {
-          BitEncoded bitEncoded = new BitEncoded(prevName, test);
+        } else if (tempList.size() == 8) {
+          BitEncoded bitEncoded = new BitEncoded(prevName, tempList);
 
           if (bitEncodedByte == 0) {
             bitEncodedTopLevel = bitEncoded;
             bitEncodedByte++;
-            test.clear();
+            tempList.clear();
             continue;
           } else if (bitEncodedByte < 3 && bitEncodedByte > 0) {
             bitEncodedTopLevel.getByteList().add(bitEncoded);
@@ -83,17 +82,15 @@ public class DataLoader {
 
           schenckDataTypeHashMap.put(bitEncoded.getValue(), bitEncoded);
         } else {
-          for (String floats : test) {
+          for (String floats : tempList) {
             IEEE754 ieee754 = new IEEE754(floats);
             schenckDataTypeHashMap.put(ieee754.getValue(), ieee754);
           }
         }
-        test.clear();
+        tempList.clear();
       }
     }
     schenckDataTypeHashMap.put("----", new IEEE754("---- Not Used"));
-    //System.out.println(schenckDataTypeHashMap.entrySet());
-    //System.out.println(toLittleEndian("8666B740"));
   }
 
   public HashMap<String, SchenckDataType> getSchenckDataTypeHashMap() {

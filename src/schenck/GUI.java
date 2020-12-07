@@ -30,7 +30,8 @@ class GUI extends JFrame {
   DataLoader dataLoader = new DataLoader();
   JPanel optionsPanel = new JPanel(new GridBagLayout()), dataDisplayPanel = new JPanel(
       new GridBagLayout());
-  JSplitPane splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, optionsPanel, dataDisplayPanel);
+  JSplitPane splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, optionsPanel,
+      dataDisplayPanel);
   JButton selectFile = new JButton("Select File");
   JList<FieldbusObject> list;
   DefaultListModel<FieldbusObject> listModel = new DefaultListModel<>();
@@ -99,8 +100,6 @@ class GUI extends JFrame {
       listModel.clear();
       listModel.addAll(fieldbusObjects);
 
-//      this.repaint();
-//      this.revalidate();
     } catch (IOException ex) {
       JOptionPane
           .showMessageDialog(this, "No file was selected or the selected file was not found.",
@@ -130,17 +129,14 @@ class GUI extends JFrame {
   }
 
 
-  void updateDataPanel(ListSelectionEvent e){
-    if(!e.getValueIsAdjusting()){
+  void updateDataPanel(ListSelectionEvent e) {
+    if (!e.getValueIsAdjusting()) {
       dataDisplayPanel.removeAll();
       FieldbusObject fieldbusObject = list.getSelectedValue();
-      addItem(dataDisplayPanel, fieldbusObject.getDataPanel(),0,0,1,1,GridBagConstraints.CENTER,GridBagConstraints.BOTH);
+      addItem(dataDisplayPanel, fieldbusObject.getDataPanel(), 0, 0, 1, 1,
+          GridBagConstraints.CENTER, GridBagConstraints.BOTH);
       this.repaint();
       this.revalidate();
-      //JOptionPane.showMessageDialog(this,new DataTypeValuePanel());
-      //System.out.println(list.getSelectedValue());
     }
   }
-
-
 }
