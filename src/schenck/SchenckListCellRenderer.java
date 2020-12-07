@@ -6,6 +6,7 @@ import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.ListCellRenderer;
 
+// From JAVA DOCS
 class SchenckListCellRenderer extends JLabel implements ListCellRenderer<Object> {
 
   public SchenckListCellRenderer() {
@@ -26,22 +27,17 @@ class SchenckListCellRenderer extends JLabel implements ListCellRenderer<Object>
     if (dropLocation != null
         && !dropLocation.isInsert()
         && dropLocation.getIndex() == index) {
-
       background = Color.BLUE;
       foreground = Color.WHITE;
-
     } else if (isSelected) {
       background = Color.BLUE;
       foreground = Color.WHITE;
-
     } else {
       background = new Color(255, 255, 255, 0);
       foreground = Color.BLACK;
     }
-
     setBackground(background);
     setForeground(foreground);
-
     return this;
   }
 }
