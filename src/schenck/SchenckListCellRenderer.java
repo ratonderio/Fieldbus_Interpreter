@@ -22,7 +22,6 @@ class SchenckListCellRenderer extends JLabel implements ListCellRenderer<Object>
     Color background;
     Color foreground;
 
-    // check if this cell represents the current DnD drop location
     JList.DropLocation dropLocation = list.getDropLocation();
     if (dropLocation != null
         && !dropLocation.isInsert()
@@ -31,12 +30,10 @@ class SchenckListCellRenderer extends JLabel implements ListCellRenderer<Object>
       background = Color.BLUE;
       foreground = Color.WHITE;
 
-      // check if this cell is selected
     } else if (isSelected) {
       background = Color.BLUE;
       foreground = Color.WHITE;
 
-      // unselected, and not the DnD drop location
     } else {
       background = new Color(255, 255, 255, 0);
       foreground = Color.BLACK;

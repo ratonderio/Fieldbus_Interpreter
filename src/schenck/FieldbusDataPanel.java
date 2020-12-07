@@ -10,7 +10,6 @@ import javax.swing.border.TitledBorder;
 
 public class FieldbusDataPanel extends JPanel {
 
-  //TODO This works with test string; GUI needs to pass the actual list in now
   FieldbusDataPanel(ArrayList<SchenckDataType> schenckDataTypes) {
     setLayout(new GridBagLayout());
     setBorder(new TitledBorder("FBFB"));
@@ -21,9 +20,7 @@ public class FieldbusDataPanel extends JPanel {
       jButton.addActionListener(
           e -> JOptionPane.showMessageDialog(this, new DataTypeValuePanel(dataType)));
       GUI.addItem(this, jButton, 0, i, 1, 1, GridBagConstraints.CENTER, 2);
-
       i++;
     }
   }
-
 }

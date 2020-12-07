@@ -1,6 +1,5 @@
 package schenck;
 
-//TODO Decide if actually useful for GUI; might be useful for labels
 public class SchenckDateTime {
 
   String currentTime;

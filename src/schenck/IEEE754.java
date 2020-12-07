@@ -2,7 +2,6 @@ package schenck;
 
 import javax.swing.JPanel;
 
-//TODO Liberal with the getters to begin with;remove extraneous when done
 public class IEEE754 implements SchenckDataType {
 
   private String name;
