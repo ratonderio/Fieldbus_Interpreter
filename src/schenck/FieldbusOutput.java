@@ -9,10 +9,10 @@ public class FieldbusOutput implements FieldbusObject {
   private FieldbusDataPanel fieldbusDataPanel;
 
   FieldbusOutput(String data, DataLoader dataLoader) {
-    dateTime = new SchenckDateTime(data.substring(0, 21), data.substring(30, 35));
+    dateTime = new SchenckDateTime(data.substring(0, data.indexOf("}")).strip(), data.substring(data.indexOf("H ") + 1, data.indexOf("ms")).strip());
     disoOutputs = new ArrayList<>();
 
-    String dataString = data.substring(40);
+    String dataString = data.substring(data.indexOf("ms") + 2).strip();
     String[] dataSplit = dataString.split("[()]");
 
     for (int i = 0; i < dataSplit.length; i++) {

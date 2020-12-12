@@ -1,18 +1,15 @@
 package schenck;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import javax.swing.JPanel;
 
-//TODO Liberal with the getters to begin with;remove extraneous when done
 public class BitEncoded implements SchenckDataType {
 
-  private String name;
-  private String value;
-  private HashMap<String, String> internalBitNames = new HashMap<>();
+  private String name, value;
   private JPanel valuePanel;
   private ArrayList<BitEncoded> byteList = new ArrayList<>();
+  private ArrayList<String> orderedBitNames = new ArrayList<>();
 
   BitEncoded(String name, List<String> bitEncodedList) {
     this.name = name;
@@ -25,7 +22,7 @@ public class BitEncoded implements SchenckDataType {
         first++;
         value = hexCode;
       }
-      internalBitNames.put(hexCode, rest);
+      orderedBitNames.add(rest);
     }
   }
 
@@ -34,7 +31,8 @@ public class BitEncoded implements SchenckDataType {
     return "BitEncoded{" +
         "name='" + name + '\'' +
         ", value='" + value + '\'' +
-        ", internalBitNames=" + internalBitNames +
+        ", byteList=" + byteList +
+        ", orderedBitNames=" + orderedBitNames +
         '}';
   }
 
@@ -58,14 +56,16 @@ public class BitEncoded implements SchenckDataType {
     return byteList;
   }
 
+  public void setName(String name) {
+    this.name = name;
+  }
+
   @Override
   public void setValue(String value) {
     this.value = value;
   }
 
-  public HashMap<String, String> getInternalBitNames() {
-    return internalBitNames;
+  public ArrayList<String> getOrderedBitNames() {
+    return orderedBitNames;
   }
-
-
 }

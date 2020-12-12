@@ -1,7 +1,6 @@
 package schenck;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import javax.swing.JPanel;
 
@@ -10,9 +9,9 @@ public class EncodedInteger implements SchenckDataType {
 
   private String name;
   private String value;
-  private HashMap<String, String> internalIntegerNames = new HashMap<>();
   private JPanel valuePanel;
   private ArrayList<EncodedInteger> byteList = new ArrayList<>();
+  private ArrayList<String> orderedIntegerNames = new ArrayList<>();
 
   EncodedInteger(String name, List<String> encodedIntegerList) {
     this.name = name;
@@ -25,7 +24,7 @@ public class EncodedInteger implements SchenckDataType {
         first++;
         value = hexCode;
       }
-      internalIntegerNames.put(hexCode, rest);
+      orderedIntegerNames.add(rest);
     }
   }
 
@@ -34,7 +33,8 @@ public class EncodedInteger implements SchenckDataType {
     return "EncodedInteger{" +
         "name='" + name + '\'' +
         ", value='" + value + '\'' +
-        ", internalIntegerNames=" + internalIntegerNames +
+        ", byteList=" + byteList +
+        ", orderedIntegerNames=" + orderedIntegerNames +
         '}';
   }
 
@@ -58,12 +58,16 @@ public class EncodedInteger implements SchenckDataType {
     this.valuePanel = valuePanel;
   }
 
+  public void setName(String name) {
+    this.name = name;
+  }
+
   @Override
   public void setValue(String value) {
     this.value = value;
   }
 
-  public HashMap<String, String> getInternalIntegerNames() {
-    return internalIntegerNames;
+  public ArrayList<String> getOrderedIntegerNames() {
+    return orderedIntegerNames;
   }
 }
