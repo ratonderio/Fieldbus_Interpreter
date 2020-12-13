@@ -51,7 +51,7 @@ class GUI extends JFrame {
       setResizable(true);
     }
 
-    optionsPanel.setBorder(new TitledBorder("FBFB"));
+    optionsPanel.setBorder(new TitledBorder("Fieldbus Capture"));
 
     selectFile.addActionListener(EventListener -> chooseFile());
 
@@ -164,9 +164,6 @@ class GUI extends JFrame {
         outputsNode.add(node);
       }
     }
-
-    this.repaint();
-    this.revalidate();
     model.reload();
   }
 

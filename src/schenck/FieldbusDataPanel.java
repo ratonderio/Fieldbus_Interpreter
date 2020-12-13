@@ -23,7 +23,7 @@ public class FieldbusDataPanel extends JPanel {
     for (SchenckDataType dataType : schenckDataTypes) {
       JButton jButton = new JButton(dataType.getValue());
       jButton.addActionListener(
-          e -> JOptionPane.showMessageDialog(this, new DataTypeValuePanel(dataType)));
+          e -> JOptionPane.showMessageDialog(this, new DataTypeValuePanel(dataType),"Interpreted Value",JOptionPane.INFORMATION_MESSAGE));
       GUI.addItem(this, new JLabel(dataType.getName()), 0, i, 1, 1, GridBagConstraints.CENTER, 2);
       GUI.addItem(this, jButton, 1, i, 1, 1, GridBagConstraints.CENTER, 2);
       i++;
