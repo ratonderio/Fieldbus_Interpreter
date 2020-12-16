@@ -1,25 +1,30 @@
 package schenck;
 
-import java.io.IOException;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.Path;
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Objects;
 
 public class DataLoader {
 
   private HashMap<String, SchenckDataType> schenckDataTypeHashMap = new HashMap<>();
 
   DataLoader() {
-    List<String> translationTable = Collections.emptyList();
+    List<String> translationTable = new ArrayList<>(Collections.emptyList());
     try {
-      translationTable = Files
-          .readAllLines(Path.of("src/resources/translate.txt"), StandardCharsets.UTF_8);
-    } catch (IOException e) {
+      ClassLoader classLoader = getClass().getClassLoader();
+      InputStream inputStream = classLoader.getResourceAsStream("translate.txt");
+      BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(
+          Objects.requireNonNull(inputStream)));
+      while (bufferedReader.ready()) {
+        translationTable.add(bufferedReader.readLine());
+      }
+    } catch (Exception e) {
       e.printStackTrace();
     }
 
@@ -46,7 +51,7 @@ public class DataLoader {
         }
       } else if (temp.substring(0, 4).matches("[CS][ot][ma].*")) {
         prevName = currentName;
-        currentName = temp;
+        currentName = temp.strip();
         if (tempList.size() <= 2) {
           EncodedInteger encodedInteger = new EncodedInteger(prevName, tempList);
           switch (intEncodedByte) {
@@ -57,6 +62,7 @@ public class DataLoader {
             case 1:
               intEncodedTopLevel.getByteList().add(encodedInteger);
               schenckDataTypeHashMap.put(encodedInteger.getValue(), encodedInteger);
+              intEncodedTopLevel.setName(intEncodedTopLevel.getName() + "/" + encodedInteger.getName());
               schenckDataTypeHashMap.put(intEncodedTopLevel.getValue(), intEncodedTopLevel);
               intEncodedByte = 0;
               break;
@@ -78,6 +84,9 @@ public class DataLoader {
             bitEncodedTopLevel.getByteList().add(bitEncoded);
             bitEncodedByte = 0;
             schenckDataTypeHashMap.put(bitEncodedTopLevel.getValue(), bitEncodedTopLevel);
+            String fullName = bitEncodedTopLevel.getName().substring(0, bitEncodedTopLevel.getName().length()-3);
+            fullName = fullName.concat("/" + bitEncoded.getName().substring(0,bitEncoded.getName().length()-3));
+            bitEncodedTopLevel.setName(fullName);
           }
 
           schenckDataTypeHashMap.put(bitEncoded.getValue(), bitEncoded);

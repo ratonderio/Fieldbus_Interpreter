@@ -1,0 +1,11 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="Fieldbus Interpreter:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/Fieldbus_Interpreter_jar</output-path>
+    <root id="archive" name="Fieldbus Interpreter.jar">
+      <element id="module-output" name="Fieldbus Interpreter" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/com/formdev/flatlaf/0.45/flatlaf-0.45.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/jetbrains/annotations/19.0.0/annotations-19.0.0.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/apache/commons/commons-lang3/3.11/commons-lang3-3.11.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>
