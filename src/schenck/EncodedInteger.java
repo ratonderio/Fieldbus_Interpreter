@@ -13,6 +13,14 @@ public class EncodedInteger implements SchenckDataType {
   private ArrayList<EncodedInteger> byteList = new ArrayList<>();
   private ArrayList<String> orderedIntegerNames = new ArrayList<>();
 
+  EncodedInteger(EncodedInteger encodedInteger){
+    this.name = encodedInteger.name;
+    this.value = encodedInteger.value;
+    this.valuePanel = encodedInteger.valuePanel;
+    this.byteList = encodedInteger.byteList;
+    this.orderedIntegerNames = encodedInteger.orderedIntegerNames;
+  }
+
   EncodedInteger(String name, List<String> encodedIntegerList) {
     this.name = name;
     int first = 0;

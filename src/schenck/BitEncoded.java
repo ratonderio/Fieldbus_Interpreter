@@ -11,6 +11,14 @@ public class BitEncoded implements SchenckDataType {
   private ArrayList<BitEncoded> byteList = new ArrayList<>();
   private ArrayList<String> orderedBitNames = new ArrayList<>();
 
+  BitEncoded(BitEncoded bitEncoded) {
+    this.name = bitEncoded.name;
+    this.value = bitEncoded.value;
+    this.valuePanel = bitEncoded.valuePanel;
+    this.byteList = bitEncoded.byteList;
+    this.orderedBitNames = bitEncoded.orderedBitNames;
+  }
+
   BitEncoded(String name, List<String> bitEncodedList) {
     this.name = name;
     int first = 0;

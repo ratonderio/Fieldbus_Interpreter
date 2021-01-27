@@ -9,8 +9,10 @@ public class FieldbusInput implements FieldbusObject {
   private FieldbusDataPanel fieldbusDataPanel;
 
   FieldbusInput(String data, DataLoader dataLoader) {
-    dateTime = new SchenckDateTime(data.substring(0, data.indexOf("{")).strip(), data.substring(data.indexOf("H ") + 1, data.indexOf("ms")).strip());
+    dateTime = new SchenckDateTime(data.substring(0, data.indexOf("{")).strip(),
+        data.substring(data.indexOf("H ") + 1, data.indexOf("ms")).strip());
     disoInputs = new ArrayList<>();
+
 
     String dataString = data.substring(data.indexOf("ms") + 2).strip();
     String[] dataSplit = dataString.split("[()]");
@@ -21,10 +23,20 @@ public class FieldbusInput implements FieldbusObject {
     for (int i = 1; i < dataSplit.length; i += 2) {
       SchenckDataType schenckDataType = dataLoader.getSchenckDataTypeHashMap()
           .get(dataSplit[i].toLowerCase());
-      schenckDataType.setValue(dataSplit[i + 1]);
-      disoInputs.add(schenckDataType);
+      SchenckDataType schenckDataTypeCopy = null;
+      if (BitEncoded.class.equals(schenckDataType.getClass())) {
+        schenckDataTypeCopy = new BitEncoded((BitEncoded) schenckDataType);
+      } else if (IEEE754.class.equals(schenckDataType.getClass())) {
+        schenckDataTypeCopy = new IEEE754((IEEE754) schenckDataType);
+      } else if( EncodedInteger.class.equals(schenckDataType.getClass())){
+        schenckDataTypeCopy = new EncodedInteger((EncodedInteger) schenckDataType);
+      }
+      assert schenckDataTypeCopy != null;
+      schenckDataTypeCopy.setValue(dataSplit[i + 1]);
+      disoInputs.add(schenckDataTypeCopy);
     }
   }
+
 
   @Override
   public String toString() {

@@ -62,7 +62,8 @@ public class DataLoader {
             case 1:
               intEncodedTopLevel.getByteList().add(encodedInteger);
               schenckDataTypeHashMap.put(encodedInteger.getValue(), encodedInteger);
-              intEncodedTopLevel.setName(intEncodedTopLevel.getName() + "/" + encodedInteger.getName());
+              intEncodedTopLevel
+                  .setName(intEncodedTopLevel.getName() + "/" + encodedInteger.getName());
               schenckDataTypeHashMap.put(intEncodedTopLevel.getValue(), intEncodedTopLevel);
               intEncodedByte = 0;
               break;
@@ -84,8 +85,10 @@ public class DataLoader {
             bitEncodedTopLevel.getByteList().add(bitEncoded);
             bitEncodedByte = 0;
             schenckDataTypeHashMap.put(bitEncodedTopLevel.getValue(), bitEncodedTopLevel);
-            String fullName = bitEncodedTopLevel.getName().substring(0, bitEncodedTopLevel.getName().length()-3);
-            fullName = fullName.concat("/" + bitEncoded.getName().substring(0,bitEncoded.getName().length()-3));
+            String fullName = bitEncodedTopLevel.getName()
+                .substring(0, bitEncodedTopLevel.getName().length() - 3);
+            fullName = fullName
+                .concat("/" + bitEncoded.getName().substring(0, bitEncoded.getName().length() - 3));
             bitEncodedTopLevel.setName(fullName);
           }
 
