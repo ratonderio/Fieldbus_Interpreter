@@ -9,11 +9,14 @@ import java.awt.Insets;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Objects;
 import java.util.Scanner;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JComponent;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -33,12 +36,19 @@ class GUI extends JFrame {
 
   DataLoader dataLoader = new DataLoader();
   JPanel optionsPanel = new JPanel(new GridBagLayout()), dataDisplayPanel = new JPanel(
-      new GridBagLayout());
+      new GridBagLayout()), optionsSubPanel = new JPanel(new GridBagLayout());
   JSplitPane splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, optionsPanel,
       dataDisplayPanel);
   JButton selectFile = new JButton("Select File");
-
   JTree fieldbusTree = new JTree(new DefaultMutableTreeNode("Fieldbus Capture"));
+  String[] disoTypeChoices = {"Disocont Tersus (VCU)",
+      "Disocont Classic (VSE)"}, wordSequenceChoices = {"I:std/L:std", "I:swp/L:std", "I:std/L:swp",
+      "I:swp/L:swp"}, byteSequenceChoices = {"High - Low", "Low - High"}, softwareTypeChoices = {
+      "VBW", "VDB", "VDD", "VKD", "VLW", "VMD"};
+
+  JComboBox<String> disoType = new JComboBox<>(disoTypeChoices), wordSequenceType = new JComboBox<>(
+      wordSequenceChoices), byteSequenceType = new JComboBox<>(
+      byteSequenceChoices), softwareType = new JComboBox<>(softwareTypeChoices);
 
   GUI() {
 
@@ -52,7 +62,6 @@ class GUI extends JFrame {
     }
 
     optionsPanel.setBorder(new TitledBorder("Fieldbus Capture"));
-
     selectFile.addActionListener(EventListener -> chooseFile());
 
     fieldbusTree.getSelectionModel().setSelectionMode(TreeSelectionModel.SINGLE_TREE_SELECTION);
@@ -61,12 +70,34 @@ class GUI extends JFrame {
 
     JScrollPane listScrollPane = new JScrollPane(fieldbusTree);
 
-    addItem(optionsPanel, selectFile, 0, 0, 1, 1, GridBagConstraints.CENTER,
+    addItem(optionsSubPanel, new JLabel("Controller:"), 0, 0, 1, 1, GridBagConstraints.WEST,
         GridBagConstraints.HORIZONTAL);
+    disoType.addActionListener(EventListener -> toggleVisibility());
+    addItem(optionsSubPanel, disoType, 1, 0, 1, 1, GridBagConstraints.CENTER,
+        GridBagConstraints.HORIZONTAL);
+    addItem(optionsSubPanel, softwareType, 2, 0, 1, 1, GridBagConstraints.EAST,
+        GridBagConstraints.HORIZONTAL);
+    softwareType.setVisible(false);
+
+    addItem(optionsSubPanel, new JLabel("Word Sequence:"), 0, 1, 1, 1, GridBagConstraints.WEST,
+        GridBagConstraints.HORIZONTAL);
+    addItem(optionsSubPanel, wordSequenceType, 1, 1, 1, 1, GridBagConstraints.EAST,
+        GridBagConstraints.HORIZONTAL);
+
+    addItem(optionsSubPanel, new JLabel("Byte Sequence:"), 0, 2, 1, 1, GridBagConstraints.WEST,
+        GridBagConstraints.HORIZONTAL);
+    addItem(optionsSubPanel, byteSequenceType, 1, 2, 1, 1, GridBagConstraints.EAST,
+        GridBagConstraints.HORIZONTAL);
+
+    addItem(optionsSubPanel, selectFile, 1, 3, 1, 1, GridBagConstraints.CENTER,
+        GridBagConstraints.HORIZONTAL);
+
+    addItem(optionsPanel, optionsSubPanel, 0, 0);
+
     addItem(optionsPanel, listScrollPane, 0, 1, 1, 1, GridBagConstraints.CENTER,
         GridBagConstraints.BOTH);
 
-    splitPane.setDividerLocation(300);
+    splitPane.setDividerLocation(400);
     add(splitPane);
 
     setVisible(true);
@@ -80,23 +111,22 @@ class GUI extends JFrame {
 
     try {
       File file = fileChooser.getSelectedFile();
-
       Scanner scanner = new Scanner(file);
       ArrayList<FieldbusObject> fieldbusObjects = new ArrayList<>();
+
       while (scanner.hasNextLine()) {
         String scanline = scanner.nextLine();
-        if (scanline.contains("{")) {
-          FieldbusInput input = new FieldbusInput(scanline, dataLoader);
-          FieldbusDataPanel fieldbusDataPanel = new FieldbusDataPanel(input.getFieldbusData(),
-              true);
-          input.setDataPanel(fieldbusDataPanel);
-          fieldbusObjects.add(input);
-        } else if (scanline.contains("}")) {
-          FieldbusOutput output = new FieldbusOutput(scanline, dataLoader);
-          FieldbusDataPanel fieldbusDataPanel = new FieldbusDataPanel(output.getFieldbusData(),
-              false);
-          output.setDataPanel(fieldbusDataPanel);
-          fieldbusObjects.add(output);
+        if (Objects.equals(disoType.getSelectedItem(), "Disocont Classic (VSE)")) {
+          FieldbusObject fieldbusObject = FieldbusParser.parseDisocontVSE(scanline, dataLoader,
+              String.valueOf(softwareType.getSelectedItem()));
+          if (fieldbusObject != null) {
+            fieldbusObjects.add(fieldbusObject);
+          }
+        } else if (Objects.equals(disoType.getSelectedItem(), "Disocont Tersus (VCU)")) {
+          FieldbusObject fieldbusObject = FieldbusParser.parseDisocontVCU(scanline, dataLoader);
+          if (fieldbusObject != null) {
+            fieldbusObjects.add(fieldbusObject);
+          }
         }
       }
       scanner.close();
@@ -147,6 +177,10 @@ class GUI extends JFrame {
     constraints.fill = fill;
     constraints.insets = insets;
     mainPanel.add(component, constraints);
+  }
+
+  void toggleVisibility(){
+    softwareType.setVisible(Objects.equals(disoType.getSelectedItem(), "Disocont Classic (VSE)"));
   }
 
   void buildTree(DefaultMutableTreeNode root, ArrayList<FieldbusObject> fieldbusObjects) {
