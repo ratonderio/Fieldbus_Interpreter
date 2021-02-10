@@ -30,7 +30,14 @@ public class DataTypeValuePanel extends JPanel {
 
       String encodedIntegerValue = schenckDataType.getValue();
       String[] encodedIntegerSplit = encodedIntegerValue.split("(?<=\\G.{2})");
-
+      if (!littleEndian) {
+        encodedIntegerSplit = new String[]{
+            encodedIntegerSplit[1],
+            encodedIntegerSplit[0],
+            encodedIntegerSplit[3],
+            encodedIntegerSplit[2]
+        };
+      }
       int i = 0;
       for (String integerName : intNamesList) {
         GUI.addItem(this, new JLabel(integerName), 0, i, 1, 1,
