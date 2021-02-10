@@ -103,47 +103,6 @@ class GUI extends JFrame {
     setVisible(true);
   }
 
-  private void chooseFile() {
-    JFileChooser fileChooser = new JFileChooser(".");
-    FileNameExtensionFilter fileFilter = new FileNameExtensionFilter("Text Document", "txt");
-    fileChooser.setFileFilter(fileFilter);
-    fileChooser.showOpenDialog(this);
-
-    try {
-      File file = fileChooser.getSelectedFile();
-      Scanner scanner = new Scanner(file);
-      ArrayList<FieldbusObject> fieldbusObjects = new ArrayList<>();
-
-      while (scanner.hasNextLine()) {
-        String scanline = scanner.nextLine();
-        if (Objects.equals(disoType.getSelectedItem(), "Disocont Classic (VSE)")) {
-          FieldbusObject fieldbusObject = FieldbusParser.parseDisocontVSE(scanline, dataLoader,
-              String.valueOf(softwareType.getSelectedItem()));
-          if (fieldbusObject != null) {
-            fieldbusObjects.add(fieldbusObject);
-          }
-        } else if (Objects.equals(disoType.getSelectedItem(), "Disocont Tersus (VCU)")) {
-          FieldbusObject fieldbusObject = FieldbusParser.parseDisocontVCU(scanline, dataLoader);
-          if (fieldbusObject != null) {
-            fieldbusObjects.add(fieldbusObject);
-          }
-        }
-      }
-      scanner.close();
-
-      DefaultMutableTreeNode root = (DefaultMutableTreeNode) fieldbusTree.getModel().getRoot();
-      buildTree(root, fieldbusObjects);
-
-    } catch (IOException ex) {
-      JOptionPane
-          .showMessageDialog(this, "No file was selected or the selected file was not found.",
-              "No File Selected", JOptionPane.INFORMATION_MESSAGE);
-    } catch (NullPointerException ex) {
-      JOptionPane.showMessageDialog(this, "Database selection cancelled.", "Cancel",
-          JOptionPane.INFORMATION_MESSAGE);
-    }
-  }
-
   public static void addItem(Container mainPanel, JComponent component, int gridx, int gridy) {
     int width = 1;
     int height = 1;
@@ -179,7 +138,52 @@ class GUI extends JFrame {
     mainPanel.add(component, constraints);
   }
 
-  void toggleVisibility(){
+  private void chooseFile() {
+    JFileChooser fileChooser = new JFileChooser(".");
+    FileNameExtensionFilter fileFilter = new FileNameExtensionFilter("Text Document", "txt");
+    fileChooser.setFileFilter(fileFilter);
+    fileChooser.showOpenDialog(this);
+
+    try {
+      File file = fileChooser.getSelectedFile();
+      Scanner scanner = new Scanner(file);
+      ArrayList<FieldbusObject> fieldbusObjects = new ArrayList<>();
+      boolean littleEndian = Objects.equals(byteSequenceType.getSelectedItem(), "Low - High");
+      boolean wordSwapped =
+          Objects.equals(wordSequenceType.getSelectedItem(), "I:swp/L:std") || Objects
+              .equals(wordSequenceType.getSelectedItem(), "I:swp/L:swp");
+      while (scanner.hasNextLine()) {
+        String scanline = scanner.nextLine();
+        if (Objects.equals(disoType.getSelectedItem(), "Disocont Classic (VSE)")) {
+          FieldbusObject fieldbusObject = FieldbusParser.parseDisocontVSE(scanline, dataLoader,
+              String.valueOf(softwareType.getSelectedItem()), littleEndian, wordSwapped);
+          if (fieldbusObject != null) {
+            fieldbusObjects.add(fieldbusObject);
+          }
+        } else if (Objects.equals(disoType.getSelectedItem(), "Disocont Tersus (VCU)")) {
+          FieldbusObject fieldbusObject = FieldbusParser
+              .parseDisocontVCU(scanline, dataLoader, littleEndian, wordSwapped);
+          if (fieldbusObject != null) {
+            fieldbusObjects.add(fieldbusObject);
+          }
+        }
+      }
+      scanner.close();
+
+      DefaultMutableTreeNode root = (DefaultMutableTreeNode) fieldbusTree.getModel().getRoot();
+      buildTree(root, fieldbusObjects);
+
+    } catch (IOException ex) {
+      JOptionPane
+          .showMessageDialog(this, "No file was selected or the selected file was not found.",
+              "No File Selected", JOptionPane.INFORMATION_MESSAGE);
+    } catch (NullPointerException ex) {
+      JOptionPane.showMessageDialog(this, "Database selection cancelled.", "Cancel",
+          JOptionPane.INFORMATION_MESSAGE);
+    }
+  }
+
+  void toggleVisibility() {
     softwareType.setVisible(Objects.equals(disoType.getSelectedItem(), "Disocont Classic (VSE)"));
   }
 

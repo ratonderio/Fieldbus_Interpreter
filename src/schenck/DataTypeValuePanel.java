@@ -12,14 +12,14 @@ import javax.swing.border.TitledBorder;
 
 public class DataTypeValuePanel extends JPanel {
 
-  DataTypeValuePanel(SchenckDataType schenckDataType) {
+  DataTypeValuePanel(SchenckDataType schenckDataType, boolean littleEndian, boolean wordSwapped) {
     String dataTypeName = schenckDataType.getName();
 
     setLayout(new GridBagLayout());
     setBorder(new TitledBorder(dataTypeName));
 
     if (schenckDataType.getClass() == IEEE754.class) {
-      String IEEE754Value = DataHelper.toLittleEndian(schenckDataType);
+      String IEEE754Value = DataHelper.formatData(schenckDataType, littleEndian, wordSwapped);
       GUI.addItem(this, new JLabel(IEEE754Value), 0, 0);
     } else if (schenckDataType.getClass() == EncodedInteger.class) {
       EncodedInteger encodedInteger = (EncodedInteger) schenckDataType;
@@ -44,11 +44,11 @@ public class DataTypeValuePanel extends JPanel {
       BitEncoded bitEncoded = (BitEncoded) schenckDataType;
 
       if (bitEncoded.getName().contains("Status 52")) {
-        createStatus5253(bitEncoded);
+        createStatus5253(bitEncoded, littleEndian);
         return;
       }
 
-      String bitEncodedValue = DataHelper.toLittleEndian(bitEncoded);
+      String bitEncodedValue = DataHelper.formatData(bitEncoded, littleEndian, wordSwapped);
       String[] bitEncodedArray = bitEncodedValue.split("");
 
       int i = 0;
@@ -94,11 +94,11 @@ public class DataTypeValuePanel extends JPanel {
     }
   }
 
-  void createStatus5253(BitEncoded bitEncoded) {
+  void createStatus5253(BitEncoded bitEncoded, boolean littleEndian) {
 
     String[] statusNames = {"Parameter Number", "Parameter Block Number", "Event Number Offset",
         "Unused", "Acknowledged", "Event Class", "Event Group", "Event Number"};
-    ArrayList<String> bitEncodedArray = DataHelper.toStatus5253(bitEncoded);
+    ArrayList<String> bitEncodedArray = DataHelper.toStatus5253(bitEncoded, littleEndian);
 
     int i = 0;
 

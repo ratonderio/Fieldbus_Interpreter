@@ -48,8 +48,17 @@ public class BitEncoded implements SchenckDataType {
     return name;
   }
 
+  public void setName(String name) {
+    this.name = name;
+  }
+
   public String getValue() {
     return value;
+  }
+
+  @Override
+  public void setValue(String value) {
+    this.value = value;
   }
 
   public JPanel getValuePanel() {
@@ -62,15 +71,6 @@ public class BitEncoded implements SchenckDataType {
 
   public ArrayList<BitEncoded> getByteList() {
     return byteList;
-  }
-
-  public void setName(String name) {
-    this.name = name;
-  }
-
-  @Override
-  public void setValue(String value) {
-    this.value = value;
   }
 
   public ArrayList<String> getOrderedBitNames() {

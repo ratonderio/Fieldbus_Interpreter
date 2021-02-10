@@ -4,22 +4,49 @@ import java.math.BigInteger;
 import java.util.ArrayList;
 import org.jetbrains.annotations.NotNull;
 
+//TODO Little Endian does byte swap only.  IEEE SWP swaps words.  Words for bit encoded get read in
+//from left to right.  Ex. (AABBCCDD -> BBAADDCC) So Little endian would first do (AABBCCDD -> BBAADDCC)
+//then it gets read in word wise (BBAADDCC -> AABBCCDD) [3,2,1,0][7,6,5,4]
+
+
 public class DataHelper {
 
   public static @NotNull
-  String toLittleEndian(SchenckDataType dataType) {
+  String formatData(SchenckDataType dataType, boolean littleEndian, boolean wordSwapped) {
     if (dataType.getValue().length() % 2 != 0) {
       return "Invalid";
     }
 
     StringBuilder hexLittleEndian = getLittleEndian(dataType.getValue());
+    StringBuilder hexWordSwapped = wordSwap(dataType.getValue());
+    StringBuilder hexBoth = wordSwap(hexLittleEndian.toString());
 
     if (dataType.getClass() == IEEE754.class) {
-      float IEEE754Value = Float
-          .intBitsToFloat((int) Long.parseLong(hexLittleEndian.toString(), 16));
+      float IEEE754Value;
+      if (littleEndian && wordSwapped) {
+        IEEE754Value = Float
+            .intBitsToFloat((int) Long.parseLong(hexBoth.toString(), 16));
+      } else if (littleEndian) {
+        IEEE754Value = Float
+            .intBitsToFloat((int) Long.parseLong(hexLittleEndian.toString(), 16));
+      } else if (wordSwapped) {
+        IEEE754Value = Float
+            .intBitsToFloat((int) Long.parseLong(hexWordSwapped.toString(), 16));
+      } else {
+        IEEE754Value = Float
+            .intBitsToFloat((int) Long.parseLong(dataType.getValue(), 16));
+      }
       return Float.toString(IEEE754Value);
     } else if (dataType.getClass() == BitEncoded.class) {
-      StringBuilder fullDwordString = getBitEncoded(hexLittleEndian.toString());
+      StringBuilder fullDwordString;
+      if (littleEndian) {
+        fullDwordString = hexBoth;
+      } else {
+        fullDwordString = hexWordSwapped;
+      }
+
+      fullDwordString = getBitEncoded(fullDwordString.toString());
+
       return fullDwordString.reverse().toString();
     } else {
       return hexLittleEndian.toString();
@@ -35,14 +62,30 @@ public class DataHelper {
 
   private static StringBuilder getLittleEndian(String hexValue) {
     StringBuilder stringBuilder = new StringBuilder();
-    for (int i = hexValue.length() - 2; i >= 0; i -= 2) {
-      stringBuilder.append(hexValue, i, i + 2);
-    }
+    String[] hexValueSplit = hexValue.split("");
+    stringBuilder.append(hexValueSplit[2]).append(hexValueSplit[3]).append(hexValueSplit[0])
+        .append(hexValueSplit[1]);
+    stringBuilder.append(hexValueSplit[6]).append(hexValueSplit[7]).append(hexValueSplit[4])
+        .append(hexValueSplit[5]);
+//    for (int i = hexValue.length() - 2; i >= 0; i -= 2) {
+//      stringBuilder.append(hexValue, i, i + 2);
+//    }
     return stringBuilder;
   }
 
-  public static ArrayList<String> toStatus5253(SchenckDataType dataType) {
-    String statusValue = getBitEncoded(getLittleEndian(dataType.getValue()).toString()).toString();
+  private static StringBuilder wordSwap(String hexValue) {
+    StringBuilder stringBuilder = new StringBuilder();
+    stringBuilder.append(hexValue, 4, 8).append(hexValue, 0, 4);
+    return stringBuilder;
+  }
+
+  public static ArrayList<String> toStatus5253(SchenckDataType dataType, boolean littleEndian) {
+    String statusValue = dataType.getValue();
+    if (littleEndian) {
+      statusValue = String.valueOf(getLittleEndian(statusValue));
+    }
+    statusValue = String.valueOf(wordSwap(statusValue));
+    statusValue = String.valueOf(getBitEncoded(statusValue));
 
     ArrayList<String> values = new ArrayList<>();
 

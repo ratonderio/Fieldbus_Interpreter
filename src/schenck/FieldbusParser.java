@@ -19,47 +19,54 @@ public class FieldbusParser {
   final static String[] defaultCommandsVMD = {"(0140)", "(0160)", "(0180)", "(0250)", "(0252)",
       "(0262)", "(----)", "(----)"};
 
-  final static String[] defaultInputsVBW = {"(02F0)", "(0310)", "(0610)", "(0750)", "(0752)", "(0758)",
+  final static String[] defaultInputsVBW = {"(02F0)", "(0310)", "(0610)", "(0750)", "(0752)",
+      "(0758)",
       "(075C)", "(0762)", "(0330)", "(0754)", "(0768)", "(076A)", "(0772)", "(0774)",
       "(0776)", "(0778)"};
-  final static String[] defaultInputsVDB = {"(02F0)", "(0310)", "(0610)", "(0750)", "(0752)", "(0758)",
+  final static String[] defaultInputsVDB = {"(02F0)", "(0310)", "(0610)", "(0750)", "(0752)",
+      "(0758)",
       "(0766)", "(076A)", "(0330)", "(0754)", "(075C)", "(07A8)", "(0768)", "(076A)",
       "(076E)", "(0770)"};
-  final static String[] defaultInputsVDD = {"(02F0)", "(0310)", "(0610)", "(0750)", "(0752)", "(075A)",
+  final static String[] defaultInputsVDD = {"(02F0)", "(0310)", "(0610)", "(0750)", "(0752)",
+      "(075A)",
       "(075C)", "(0766)", "(0330)", "(0754)", "(0772)", "(07A8)", "(0768)", "(076A)",
       "(076E)", "(0770)"};
-  final static String[] defaultInputsVKD = {"(02F0)", "(0310)", "(0610)", "(0750)", "(0752)", "(0760)",
+  final static String[] defaultInputsVKD = {"(02F0)", "(0310)", "(0610)", "(0750)", "(0752)",
+      "(0760)",
       "(0762)", "(0766)", "(0330)", "(0754)", "(075E)", "(07A8)", "(0768)", "(076A)",
       "(0650)", "(0770)"};
-  final static String[] defaultInputsVMD = {"(02F0)", "(0310)", "(0610)", "(0750)", "(0752)", "(075A)",
+  final static String[] defaultInputsVMD = {"(02F0)", "(0310)", "(0610)", "(0750)", "(0752)",
+      "(075A)",
       "(075C)", "(0766)", "(0330)", "(0754)", "(075E)", "(07A8)", "(0768)", "(076A)",
       "(076E)", "(0770)"};
 
 
-  public static FieldbusObject parseDisocontVSE(String scanline, DataLoader dataLoader,String softwareType) {
+  public static FieldbusObject parseDisocontVSE(String scanline, DataLoader dataLoader,
+      String softwareType, boolean littleEndian, boolean wordSwapped) {
     String parsedScanline;
     if (scanline.contains("==>")) {
-      parsedScanline = convertObjectString(scanline, true,softwareType);
-      return parseDisocontVCU(parsedScanline, dataLoader);
+      parsedScanline = convertObjectString(scanline, true, softwareType);
+      return parseDisocontVCU(parsedScanline, dataLoader, littleEndian, wordSwapped);
     } else if (scanline.contains("<==")) {
-      parsedScanline = convertObjectString(scanline, false,softwareType);
-      return parseDisocontVCU(parsedScanline, dataLoader);
+      parsedScanline = convertObjectString(scanline, false, softwareType);
+      return parseDisocontVCU(parsedScanline, dataLoader, littleEndian, wordSwapped);
     } else {
       return null;
     }
   }
 
-  public static FieldbusObject parseDisocontVCU(String scanline, DataLoader dataLoader) {
+  public static FieldbusObject parseDisocontVCU(String scanline, DataLoader dataLoader,
+      boolean littleEndian, boolean wordSwapped) {
     if (scanline.contains("{")) {
       FieldbusInput input = new FieldbusInput(scanline, dataLoader);
       FieldbusDataPanel fieldbusDataPanel = new FieldbusDataPanel(input.getFieldbusData(),
-          true);
+          true, littleEndian, wordSwapped);
       input.setDataPanel(fieldbusDataPanel);
       return input;
     } else if (scanline.contains("}")) {
       FieldbusOutput output = new FieldbusOutput(scanline, dataLoader);
       FieldbusDataPanel fieldbusDataPanel = new FieldbusDataPanel(output.getFieldbusData(),
-          false);
+          false, littleEndian, wordSwapped);
       output.setDataPanel(fieldbusDataPanel);
       return output;
     } else {
@@ -68,7 +75,8 @@ public class FieldbusParser {
   }
 
 
-  private static String convertObjectString(String scanline, boolean isCommand, String softwareType) {
+  private static String convertObjectString(String scanline, boolean isCommand,
+      String softwareType) {
     StringBuilder convertedScanline = new StringBuilder();
     String dataSubstring;
     String[] defaultSoftwareOutput, defaultSoftwareInput;
@@ -126,7 +134,6 @@ public class FieldbusParser {
         defaultSoftwareOutput = defaultCommandsVKD;
       }
     }
-
 
     for (int i = 0; i <= 7; i++) {
       if (isCommand) {

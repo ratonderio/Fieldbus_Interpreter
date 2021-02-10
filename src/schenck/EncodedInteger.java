@@ -13,7 +13,7 @@ public class EncodedInteger implements SchenckDataType {
   private ArrayList<EncodedInteger> byteList = new ArrayList<>();
   private ArrayList<String> orderedIntegerNames = new ArrayList<>();
 
-  EncodedInteger(EncodedInteger encodedInteger){
+  EncodedInteger(EncodedInteger encodedInteger) {
     this.name = encodedInteger.name;
     this.value = encodedInteger.value;
     this.valuePanel = encodedInteger.valuePanel;
@@ -50,29 +50,29 @@ public class EncodedInteger implements SchenckDataType {
     return name;
   }
 
+  public void setName(String name) {
+    this.name = name;
+  }
+
   public String getValue() {
     return value;
+  }
+
+  @Override
+  public void setValue(String value) {
+    this.value = value;
   }
 
   public JPanel getValuePanel() {
     return valuePanel;
   }
 
-  public ArrayList<EncodedInteger> getByteList() {
-    return byteList;
-  }
-
   public void setValuePanel(JPanel valuePanel) {
     this.valuePanel = valuePanel;
   }
 
-  public void setName(String name) {
-    this.name = name;
-  }
-
-  @Override
-  public void setValue(String value) {
-    this.value = value;
+  public ArrayList<EncodedInteger> getByteList() {
+    return byteList;
   }
 
   public ArrayList<String> getOrderedIntegerNames() {

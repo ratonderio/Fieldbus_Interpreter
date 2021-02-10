@@ -11,7 +11,8 @@ import javax.swing.border.TitledBorder;
 
 public class FieldbusDataPanel extends JPanel {
 
-  FieldbusDataPanel(ArrayList<SchenckDataType> schenckDataTypes, boolean inputBorder) {
+  FieldbusDataPanel(ArrayList<SchenckDataType> schenckDataTypes, boolean inputBorder,
+      boolean littleEndian, boolean wordSwapped) {
     setLayout(new GridBagLayout());
     setBorder(new TitledBorder(inputBorder ? "Fieldbus Input" : "Fieldbus Output"));
     JLabel nameLabel = new JLabel("Name"), valueLabel = new JLabel("Value");
@@ -24,7 +25,8 @@ public class FieldbusDataPanel extends JPanel {
       JButton jButton = new JButton(dataType.getValue());
       jButton.addActionListener(
           e -> JOptionPane
-              .showMessageDialog(this, new DataTypeValuePanel(dataType), "Interpreted Value",
+              .showMessageDialog(this, new DataTypeValuePanel(dataType, littleEndian, wordSwapped),
+                  "Interpreted Value",
                   JOptionPane.INFORMATION_MESSAGE));
       GUI.addItem(this, new JLabel(dataType.getName()), 0, i, 1, 1, GridBagConstraints.CENTER, 2);
       GUI.addItem(this, jButton, 1, i, 1, 1, GridBagConstraints.CENTER, 2);

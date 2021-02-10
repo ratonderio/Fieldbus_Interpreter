@@ -8,7 +8,7 @@ public class IEEE754 implements SchenckDataType {
   private String value;
   private JPanel valuePanel;
 
-  IEEE754(IEEE754 ieee754){
+  IEEE754(IEEE754 ieee754) {
     this.name = ieee754.name;
     this.value = ieee754.value;
     this.valuePanel = ieee754.valuePanel;
@@ -35,16 +35,16 @@ public class IEEE754 implements SchenckDataType {
     return value;
   }
 
+  @Override
+  public void setValue(String value) {
+    this.value = value;
+  }
+
   public JPanel getValuePanel() {
     return valuePanel;
   }
 
   public void setValuePanel(JPanel valuePanel) {
     this.valuePanel = valuePanel;
-  }
-
-  @Override
-  public void setValue(String value) {
-    this.value = value;
   }
 }

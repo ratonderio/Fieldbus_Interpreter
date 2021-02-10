@@ -13,7 +13,6 @@ public class FieldbusInput implements FieldbusObject {
         data.substring(data.indexOf("H ") + 1, data.indexOf("ms")).strip());
     disoInputs = new ArrayList<>();
 
-
     String dataString = data.substring(data.indexOf("ms") + 2).strip();
     String[] dataSplit = dataString.split("[()]");
 
@@ -28,7 +27,7 @@ public class FieldbusInput implements FieldbusObject {
         schenckDataTypeCopy = new BitEncoded((BitEncoded) schenckDataType);
       } else if (IEEE754.class.equals(schenckDataType.getClass())) {
         schenckDataTypeCopy = new IEEE754((IEEE754) schenckDataType);
-      } else if( EncodedInteger.class.equals(schenckDataType.getClass())){
+      } else if (EncodedInteger.class.equals(schenckDataType.getClass())) {
         schenckDataTypeCopy = new EncodedInteger((EncodedInteger) schenckDataType);
       }
       assert schenckDataTypeCopy != null;

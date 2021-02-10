@@ -6,9 +6,9 @@ public interface SchenckDataType {
 
   String getName();
 
-  void setValue(String value);
-
   String getValue();
+
+  void setValue(String value);
 
   void setValuePanel(JPanel valuePanel);
 

@@ -1,7 +1,6 @@
 package schenck;
 
 import java.util.ArrayList;
-import java.util.concurrent.CopyOnWriteArrayList;
 
 public class FieldbusOutput implements FieldbusObject {
 
@@ -28,7 +27,7 @@ public class FieldbusOutput implements FieldbusObject {
         schenckDataTypeCopy = new BitEncoded((BitEncoded) schenckDataType);
       } else if (IEEE754.class.equals(schenckDataType.getClass())) {
         schenckDataTypeCopy = new IEEE754((IEEE754) schenckDataType);
-      } else if( EncodedInteger.class.equals(schenckDataType.getClass())){
+      } else if (EncodedInteger.class.equals(schenckDataType.getClass())) {
         schenckDataTypeCopy = new EncodedInteger((EncodedInteger) schenckDataType);
       }
       assert schenckDataTypeCopy != null;
